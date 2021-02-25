@@ -1,1 +1,1 @@
-Hello!
+Hello! If you can read this, ssh auntification worked!
