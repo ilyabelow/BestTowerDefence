@@ -22,5 +22,20 @@ namespace Field
                 }
             }
         }
+        
+        public Node GetNode(int i, int j)
+        {
+            if (i < 0 || i >= m_Width)
+            {
+                return null;
+            }
+
+            if (j < 0 || j >= m_Height)
+            {
+                return null;
+            }
+            
+            return m_Nodes[i, j];
+        }
     }
 }
