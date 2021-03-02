@@ -29,6 +29,7 @@ public class MovementCursor : MonoBehaviour
     private void Awake()
     {
         _camera = Camera.main;
+        ResizePlane();
     }
 
     private void Update()
@@ -39,6 +40,8 @@ public class MovementCursor : MonoBehaviour
         {
             if (hit.transform != transform) // temp solution?
             {
+                // TODO plane behind agent is unreachable, that's bad
+                _cursor.SetActive(false); //disable if ray did not reach the plane
                 return;
             }
 
@@ -68,12 +71,7 @@ public class MovementCursor : MonoBehaviour
 
     private void OnValidate()
     {
-        float width = _gridWidth * _nodeSize;
-        float height = _gridHeight * _nodeSize;
-
-        // Default plane size is 10 by 10 (bodge)
-        transform.localScale = new Vector3(width * 0.1f, 1f, height * 0.1f);
-        _offset = transform.position - 0.5f * new Vector3(width, 0f, height);
+        ResizePlane();
     }
 
     private void OnDrawGizmos()
@@ -92,5 +90,15 @@ public class MovementCursor : MonoBehaviour
 
         // Origin drawing
         Gizmos.DrawSphere(_offset, 0.1f);
+    }
+
+    private void ResizePlane()
+    {
+        float width = _gridWidth * _nodeSize;
+        float height = _gridHeight * _nodeSize;
+
+        // Default plane size is 10 by 10 (bodge)
+        transform.localScale = new Vector3(width * 0.1f, 1f, height * 0.1f);
+        _offset = transform.position - 0.5f * new Vector3(width, 0f, height);
     }
 }
