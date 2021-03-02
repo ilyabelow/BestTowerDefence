@@ -436,7 +436,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 336422472}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 23.591345, y: -24.813145, z: -13.792267}
+  m_LocalPosition: {x: -2.6, y: -24.813145, z: -13.3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1000479356}
@@ -454,10 +454,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8861c6d1d68f188f95de5c6f95343bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mass: 1
-  gravityConstant: 500
-  startVelocity: {x: 0, y: 0, z: 10}
-  companion: {fileID: 1952009170}
+  _mass: 0.1
+  _gravityConstant: 1000
+  _startVelocity: {x: 0, y: 0, z: 10}
+  _companion: {fileID: 1952009170}
 --- !u!96 &336422478
 TrailRenderer:
   serializedVersion: 2
@@ -499,7 +499,7 @@ TrailRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Time: 5
+  m_Time: 25
   m_Parameters:
     serializedVersion: 3
     widthMultiplier: 1
@@ -843,7 +843,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1000479356
 Transform:
   m_ObjectHideFlags: 0
@@ -1002,7 +1002,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1397951367
 Transform:
   m_ObjectHideFlags: 0
@@ -1607,7 +1607,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1952009165}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 12.34, y: -24.63, z: -3.18}
+  m_LocalPosition: {x: 7.5, y: -24.63, z: -13.8}
   m_LocalScale: {x: 3.7798, y: 3.7798, z: 3.7798}
   m_Children: []
   m_Father: {fileID: 1000479356}
@@ -1625,10 +1625,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8861c6d1d68f188f95de5c6f95343bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mass: 5
-  gravityConstant: 500
-  startVelocity: {x: 0, y: 0, z: -2}
-  companion: {fileID: 336422477}
+  _mass: 1
+  _gravityConstant: 1000
+  _startVelocity: {x: 0, y: 0, z: 0}
+  _companion: {fileID: 336422477}
 --- !u!1 &2007064339
 GameObject:
   m_ObjectHideFlags: 0
@@ -1646,7 +1646,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2007064340
 Transform:
   m_ObjectHideFlags: 0

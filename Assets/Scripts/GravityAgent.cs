@@ -8,53 +8,56 @@ using Object = System.Object;
 public class GravityAgent : MonoBehaviour
 {
     [SerializeField] 
-    private float mass;
+    private float _mass;
     [SerializeField] 
-    private float gravityConstant; // TODO make common
+    private float _gravityConstant; // TODO make common
     [SerializeField]
-    private Vector3 startVelocity;
+    private Vector3 _startVelocity;
     [SerializeField]
-    private GravityAgent companion;
+    private GravityAgent _companion;
     
-    private Vector3 velocity;
+    private Vector3 _velocity;
     
 
     
     private void Start()
     {
-        velocity = startVelocity;
+        _velocity = _startVelocity;
     }
 
     void FixedUpdate()
     {
-        Vector3 direction =  companion.transform.position - transform.position;
-        float Rr = direction.magnitude;
+        Vector3 difference =  _companion.transform.position - transform.position;
+        float rr = difference.magnitude;
 
-        if (Rr < (transform.localScale.x + companion.transform.localScale.x)*.5) // Collision
+        if (rr < (transform.localScale.x + _companion.transform.localScale.x)*.5) // Collision
         {
-            Destroy(gameObject);
+            gameObject.SetActive(false);
+            _companion.gameObject.SetActive(false);
             Debug.Log("Boom!");
             return;
         }
         
-        Vector3 acc = gravityConstant * companion.mass / (mass * Rr * Rr * Rr) * direction;
-
-        velocity += acc * Time.deltaTime;
-        transform.position += velocity * Time.deltaTime;
+        Vector3 acc = _gravityConstant * _companion._mass / (rr * rr * rr) * difference;
+        
+        _velocity += Time.deltaTime * acc;
+        transform.position += Time.deltaTime * _velocity;
 
     }
 
     private void OnDrawGizmos()
     {
+        var position = transform.position;
         if (!Application.isPlaying)
         {
             Gizmos.color = Color.red;
-            Gizmos.DrawLine(transform.position, transform.position+startVelocity);
+            Gizmos.DrawLine(position, position+_startVelocity);
         }
         else
         {
             Gizmos.color = Color.red;
-            Gizmos.DrawLine(transform.position, transform.position + velocity);
+            Gizmos.DrawLine(position, position + _velocity);
         }
     }
+
 }
