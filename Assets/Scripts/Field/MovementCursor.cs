@@ -15,9 +15,11 @@ public class MovementCursor : MonoBehaviour
     [SerializeField] private float _nodeSize;
 
     [SerializeField] private MovementAgent _agent;
-    [SerializeField] private GameObject _cursor;
+    [SerializeField] private GameObject _cursorPrefab;
 
     [SerializeField] private MovementMode _mode;
+    
+    private GameObject _cursor;
 
     private Camera _camera;
     private Vector3 _offset;
@@ -30,6 +32,7 @@ public class MovementCursor : MonoBehaviour
     {
         _camera = Camera.main;
         ResizePlane();
+        _cursor = Instantiate(_cursorPrefab, Vector3.zero, Quaternion.identity);
     }
 
     private void Update()
@@ -46,11 +49,11 @@ public class MovementCursor : MonoBehaviour
             }
 
             _cursor.SetActive(true);
-            if (_mode is MovementMode.Free)
+            if (_mode == MovementMode.Free)
             {
                 _cursor.transform.position = hit.point;
             }
-            else if (_mode is MovementMode.Grid)
+            else if (_mode == MovementMode.Grid)
             {
                 Vector3 difference = hit.point - _offset;
                 int x = (int) (difference.x / _nodeSize);
@@ -80,12 +83,12 @@ public class MovementCursor : MonoBehaviour
         // Grid drawing
         for (int i = 1; i < _gridWidth; i++)
         {
-            Gizmos.DrawLine(_offset + i * _iVector, _offset + i * _iVector + _gridHeight * _jVector);
+            Gizmos.DrawLine(_offset + i * _iVector * _nodeSize, _offset + i * _iVector * _nodeSize + _gridHeight * _jVector * _nodeSize);
         }
 
         for (int j = 1; j < _gridHeight; j++)
         {
-            Gizmos.DrawLine(_offset + j * _jVector, _offset + j * _jVector + _gridWidth * _iVector);
+            Gizmos.DrawLine(_offset + j * _jVector * _nodeSize, _offset + j * _jVector * _nodeSize + _gridWidth * _iVector * _nodeSize);
         }
 
         // Origin drawing
@@ -100,5 +103,49 @@ public class MovementCursor : MonoBehaviour
         // Default plane size is 10 by 10 (bodge)
         transform.localScale = new Vector3(width * 0.1f, 1f, height * 0.1f);
         _offset = transform.position - 0.5f * new Vector3(width, 0f, height);
+    }
+}
+
+public class LegController
+{
+    private Transform _leg1;
+    private Transform _leg2;
+
+    private float _legTime;
+    private float _inc;
+
+    private float _ampZ;
+    private float _ampY;
+
+
+    public LegController(Transform parent, float inc, float ampY, float ampZ)
+    {
+        _inc = inc;
+        _ampZ = ampZ;
+        _ampY = ampY;
+        _leg1 = parent.Find("leg1_container/leg1");
+        _leg2 = parent.Find("leg2_container/leg2");
+    }
+
+
+    public void MoveLegs()
+    {
+        _legTime += _inc;
+        if (_legTime > 2)
+        {
+            _legTime = 0;
+        }
+
+        _leg1.localPosition = _ampY * Mathf.Sin(_legTime * (float) Math.PI) * Vector3.up
+                              + _ampZ * Mathf.Cos(_legTime* (float) Math.PI) * Vector3.back;
+        _leg2.localPosition = _ampY * Mathf.Sin(_legTime * (float) Math.PI) * Vector3.down
+                              + _ampZ * Mathf.Cos(_legTime * (float) Math.PI) * Vector3.forward;
+    }
+
+    public void ResetLegs()
+    {
+        _legTime = 0;
+        _leg1.localPosition = Vector3.zero;
+        _leg2.localPosition = Vector3.zero;
     }
 }
