@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 655b33a148d84a38bca86fad9cc79971, type: 3}
+  m_Name: AssetRoot
+  m_EditorClassIdentifier: 
+  RunnerPrefab: {fileID: 1919489226509391252, guid: 3db2103e26f638272848c0b77624e8a5, type: 3}
+  Levels:
+  - {fileID: 11400000, guid: 140a1e6d0ebc67a0b864eaf904a1124c, type: 2}

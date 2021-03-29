@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e752c789e95044cca48308eec2354897, type: 3}
+  m_Name: Level1
+  m_EditorClassIdentifier: 
+  SceneAsset: {fileID: 102900000, guid: 9fc0d4010bbf28b4594072e72b8655ab, type: 3}
+  SpawnWaves:
+  - EnemyAsset: {fileID: 11400000, guid: 70da7cd5c4c612622aefcde476ddba87, type: 2}
+    Count: 5
+    TimeBetweenSpawns: 2
+    TimeBeforeStartWave: 5
+  - EnemyAsset: {fileID: 11400000, guid: 2c5fdc9e8c4ccf29a8d78f1b45eaa325, type: 2}
+    Count: 10
+    TimeBetweenSpawns: 1
+    TimeBeforeStartWave: 5

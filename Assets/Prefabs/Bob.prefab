@@ -135,7 +135,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2566545635069191124}
-  - component: {fileID: -3192233341196544775}
+  - component: {fileID: 3877720852257469275}
   m_Layer: 0
   m_Name: Bob
   m_TagString: Untagged
@@ -161,7 +161,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &-3192233341196544775
+--- !u!114 &3877720852257469275
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -170,13 +170,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 3819912672067759006}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8c7637de2865a7bdeb273b104cfbf3ce, type: 3}
+  m_Script: {fileID: 11500000, guid: 36238674931c43ebb68c2212c32396ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 3
-  _ampY: 0.1
-  _ampZ: 0.1
-  _legSpeed: 0.05
 --- !u!1 &4348759131707867327
 GameObject:
   m_ObjectHideFlags: 0

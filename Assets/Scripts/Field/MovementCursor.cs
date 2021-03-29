@@ -1,4 +1,6 @@
 using System;
+using Turret;
+using Unit;
 using UnityEngine;
 using Object = UnityEngine.Object;
 
@@ -24,12 +26,12 @@ namespace Field
         private Vector3 _offset;
 
         private Grid _grid;
+        public Grid Grid => _grid;
         [SerializeField] private Vector2Int _targetPosition;
         [SerializeField] private GameObject _targetObject;
         [SerializeField] private Vector2Int _spawnerPosition;
-        [SerializeField] private UnitSpawner _spawnerObject;
+        [SerializeField] private EnemySpawner _spawnerObject;
 
-        // Temp solution, TODO introduce support of arbitrary plane orientation
         private readonly Vector3 _iVector = Vector3.right;
         private readonly Vector3 _jVector = Vector3.forward;
 
@@ -41,7 +43,7 @@ namespace Field
             _camera = Camera.main;
             _cursor = Instantiate(_cursorPrefab, Vector3.zero, Quaternion.identity);
             _cursor.transform.localScale = _nodeSize * (Vector3.forward + Vector3.right) + 0.1f * Vector3.up;
-            
+
             _grid = new Grid(_gridWidth, _gridHeight, _targetPosition, _spawnerPosition);
 
             for (int i = 0; i < _gridWidth; i++)
@@ -51,15 +53,11 @@ namespace Field
                     _grid[i, j].Position = RealPosition(i, j);
                 }
             }
-
-            _spawnerObject.HomeNode = _grid[_spawnerPosition];
-            PositionPoints();
-            Debug.Log("updpaths");
-
+            PositionMarkers();
             _grid.UpdatePaths();
         }
-
-        private void Update()
+        
+        public void Raycast()
         {
             Vector3 mousePosition = Input.mousePosition;
             Ray ray = _camera.ScreenPointToRay(mousePosition);
@@ -67,7 +65,6 @@ namespace Field
             {
                 if (hit.transform != transform) // temp solution?
                 {
-                    // TODO plane behind agent is unreachable, that's bad
                     _cursor.SetActive(false); //disable if ray did not reach the plane
                     return;
                 }
@@ -176,7 +173,7 @@ namespace Field
         private void OnValidate()
         {
             ResizePlane();
-            PositionPoints();
+            PositionMarkers();
         }
 
 
@@ -191,7 +188,7 @@ namespace Field
             _offset = transformThis.position - 0.5f * new Vector3(width, 0f, height);
         }
 
-        private void PositionPoints()
+        private void PositionMarkers()
         {
             _targetObject.transform.position = RealPosition(_targetPosition.x, _targetPosition.y);
             _spawnerObject.transform.position = RealPosition(_spawnerPosition.x, _spawnerPosition.y);

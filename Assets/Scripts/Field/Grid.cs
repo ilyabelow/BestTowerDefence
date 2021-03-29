@@ -9,6 +9,8 @@ namespace Field
         
         private readonly uint _width;
         private readonly uint _height;
+        private readonly Vector2Int _target;
+        private readonly Vector2Int _start;
 
         public uint Width => _width;
 
@@ -18,11 +20,17 @@ namespace Field
         public Node this[Vector2Int coord] => _nodes[coord.x, coord.y];
 
         private readonly GridPathfinder _gridPathfinder;
-        
+
+        public Node StartNode => this[_start];
+
+        public Node TargetNode => this[_target];
+
         public Grid(uint width, uint height, Vector2Int target, Vector2Int start)
         {
             _width = width;
             _height = height;
+            _target = target;
+            _start = start;
             _gridPathfinder = new GridPathfinder(this, target, start);
             _nodes = new Node[_width, _height];
             for (int i = 0; i < _width; i++)
