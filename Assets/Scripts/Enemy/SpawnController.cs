@@ -55,21 +55,22 @@ namespace Enemy
         private void SpawnEnemy(EnemyAsset asset)
         {
             EnemyData data = new EnemyData(asset);
-            var view = Object.Instantiate(asset._viewPrefab); 
+            var view = Object.Instantiate(asset._viewPrefab);
             data.AttachView(view);
             view.AttachData(data);
-            
+
             // Very bad ((
             switch (asset._movementType)
             {
                 case MovementType.Grid:
-                    // temp solution TODO move to controller???
                     view.AttachMovementAgent(
                         new GridMovementAgent(Game.Player.MovementCursor.Grid, view.transform, asset._speed)
                     );
                     break;
                 case MovementType.Flying:
-                    Debug.Log("Not implemented yet");
+                    view.AttachMovementAgent(
+                        new AirMovementAgent(Game.Player.MovementCursor.Grid, view.transform, asset._speed)
+                    );
                     break;
             }
 

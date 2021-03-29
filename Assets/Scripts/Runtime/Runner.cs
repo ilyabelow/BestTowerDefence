@@ -17,6 +17,7 @@ namespace Runtime
             {
                 return;
             }
+
             TickControllers();
         }
 
@@ -51,7 +52,7 @@ namespace Runtime
                 controller.OnStart();
             }
         }
-        
+
         private void TickControllers()
         {
             foreach (IController controller in _controllers)
@@ -59,7 +60,7 @@ namespace Runtime
                 controller.Tick();
             }
         }
-        
+
         private void OnStopControllers()
         {
             foreach (IController controller in _controllers)

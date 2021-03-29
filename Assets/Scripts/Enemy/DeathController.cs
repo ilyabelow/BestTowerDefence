@@ -16,13 +16,12 @@ namespace Enemy
                     toDie.Add(enemyData);
                 }
             }
-            
+
             foreach (var enemyData in toDie)
             {
                 Game.Player.EnemyDied(enemyData);
                 Object.Destroy(enemyData.View.gameObject);
             }
-            
         }
 
         public void OnStart()

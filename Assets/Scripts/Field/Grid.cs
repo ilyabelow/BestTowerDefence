@@ -6,7 +6,7 @@ namespace Field
     public class Grid
     {
         private Node[,] _nodes;
-        
+
         private readonly uint _width;
         private readonly uint _height;
         private readonly Vector2Int _target;
@@ -46,7 +46,7 @@ namespace Field
         {
             return _gridPathfinder.CanBeOccupied(node);
         }
-        
+
         public IEnumerable<Node> EnumerateAllNodes()
         {
             for (int i = 0; i < _width; i++)
@@ -62,6 +62,5 @@ namespace Field
         {
             _gridPathfinder.UpdateField();
         }
-
     }
 }

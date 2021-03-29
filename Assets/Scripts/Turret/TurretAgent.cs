@@ -11,7 +11,7 @@ namespace Turret
         [SerializeField] private float _bulletLife;
         [SerializeField] private float _rechargeTime;
 
-    
+
         private float _alpha;
         private float _countdown;
 
@@ -21,7 +21,7 @@ namespace Turret
             _countdown = _rechargeTime;
             transform.eulerAngles = new Vector3(0, _alpha, 0);
         }
-    
+
         void Update()
         {
             _countdown -= Time.deltaTime;
@@ -30,7 +30,7 @@ namespace Turret
                 _countdown = _rechargeTime;
                 var direction = Quaternion.AngleAxis(_alpha, Vector3.up) * Vector3.forward;
                 var bullet = Instantiate(_bulletPrefab, transform.position, Quaternion.identity);
-                bullet.Constructor( _bulletSpeed * direction, _bulletLife);
+                bullet.Constructor(_bulletSpeed * direction, _bulletLife);
             }
         }
     }

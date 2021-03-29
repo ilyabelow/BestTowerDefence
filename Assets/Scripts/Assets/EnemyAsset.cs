@@ -8,6 +8,7 @@ namespace Assets
         Grid,
         Flying
     }
+
     [CreateAssetMenu(fileName = "Enemy", menuName = "Assets/Enemy Asset", order = 2)]
     public class EnemyAsset : ScriptableObject
     {

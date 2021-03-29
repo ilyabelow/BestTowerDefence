@@ -10,6 +10,7 @@ namespace Enemy
         private IMovementAgent _movementAgent;
 
         public IMovementAgent MovementAgent => _movementAgent;
+
         public void AttachData(EnemyData data)
         {
             _enemyData = data;

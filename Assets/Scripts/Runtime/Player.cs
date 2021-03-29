@@ -23,7 +23,7 @@ namespace Runtime
         {
             _enemyDatas.Add(data);
         }
-        
+
         public void EnemyDied(EnemyData data)
         {
             _enemyDatas.Remove(data);

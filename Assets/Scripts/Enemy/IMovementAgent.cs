@@ -4,6 +4,6 @@ namespace Enemy
     {
         void TickMovement();
 
-        bool ShouldDie();
+        bool ReachedGoal();
     }
 }
