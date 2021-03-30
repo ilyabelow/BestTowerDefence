@@ -5,6 +5,7 @@ using UnityEngine;
 
 namespace Field
 {
+    
     public readonly struct Connection
     {
         public Connection(Vector2Int coordinate, float weight)
@@ -19,6 +20,9 @@ namespace Field
 
     public class GridPathfinder
     {
+        private static readonly float Sqrt2 = (float) Math.Sqrt(2);
+
+
         private readonly Grid _grid;
         private readonly Vector2Int _target;
         private readonly Vector2Int _start;
@@ -163,22 +167,22 @@ namespace Field
 
             if (hasRightDownNode)
             {
-                yield return new Connection(rightDownCoordinate, (float) Math.Sqrt(2));
+                yield return new Connection(rightDownCoordinate, Sqrt2);
             }
 
             if (hasLeftUpNode)
             {
-                yield return new Connection(leftUpCoordinate, (float) Math.Sqrt(2));
+                yield return new Connection(leftUpCoordinate, Sqrt2);
             }
 
             if (hasUpRightNode)
             {
-                yield return new Connection(upRightCoordinate, (float) Math.Sqrt(2));
+                yield return new Connection(upRightCoordinate, Sqrt2);
             }
 
             if (hasDownLeftNode)
             {
-                yield return new Connection(downLeftCoordinate, (float) Math.Sqrt(2));
+                yield return new Connection(downLeftCoordinate, Sqrt2);
             }
         }
     }

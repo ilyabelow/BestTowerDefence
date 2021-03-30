@@ -1,7 +1,7 @@
 using Enemy;
 using UnityEngine;
 
-namespace Assets
+namespace Enemy
 {
     public enum MovementType
     {
@@ -12,9 +12,9 @@ namespace Assets
     [CreateAssetMenu(fileName = "Enemy", menuName = "Assets/Enemy Asset", order = 2)]
     public class EnemyAsset : ScriptableObject
     {
-        public EnemyView _viewPrefab;
-        public MovementType _movementType;
-        public int _startHealth;
-        public float _speed;
+        public EnemyView EnemyPrefab;
+        public MovementType MovementType;
+        public int StartHealth;
+        public float Speed;
     }
 }

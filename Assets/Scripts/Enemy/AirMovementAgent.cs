@@ -37,7 +37,7 @@ namespace Enemy
             }
         }
 
-        public bool ReachedGoal()
+        public bool ReachedTarget()
         {
             return _targetNode == null;
         }

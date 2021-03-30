@@ -7,6 +7,8 @@ namespace Enemy
     {
         private EnemyData _enemyData;
 
+        public EnemyData Data => _enemyData;
+
         private IMovementAgent _movementAgent;
 
         public IMovementAgent MovementAgent => _movementAgent;

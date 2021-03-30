@@ -10,7 +10,7 @@ namespace Enemy
             {
                 var agent = enemyData.View.MovementAgent;
                 agent.TickMovement();
-                if (agent.ReachedGoal())
+                if (agent.ReachedTarget())
                 {
                     enemyData.IsAlive = false;
                 }

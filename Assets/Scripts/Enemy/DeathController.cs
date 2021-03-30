@@ -22,6 +22,7 @@ namespace Enemy
                 Game.Player.EnemyDied(enemyData);
                 Object.Destroy(enemyData.View.gameObject);
             }
+            
         }
 
         public void OnStart()

@@ -184,17 +184,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ceb6fbdea44324a3ab7cc2ee4773bf6a, type: 3}
---- !u!114 &594883083 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4594838527380583406, guid: 35a5200f678c600f49449c199357d012, type: 3}
-  m_PrefabInstance: {fileID: 1609167512}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7e25463e3835c497088b60e7eae2df58, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -281,13 +270,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 705507993}
-  m_LocalRotation: {x: 0.31281075, y: 0.4541629, z: -0.513171, w: 0.6576785}
-  m_LocalPosition: {x: -18.15, y: 19.88, z: 35.6}
+  m_LocalRotation: {x: 0.38333347, y: 0.1381742, z: -0.5825163, w: 0.7033052}
+  m_LocalPosition: {x: -17.8, y: 17.61, z: 30.26}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 61.352, y: 395.197, z: 305.384}
+  m_LocalEulerAnglesHint: {x: 44.441, y: 339.311, z: 272.204}
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0
@@ -365,7 +354,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
   m_LocalRotation: {x: 0.6418744, y: -0, z: -0, w: 0.7668099}
-  m_LocalPosition: {x: 13.02, y: 12.17, z: 7.57}
+  m_LocalPosition: {x: 13.02, y: 9.26, z: 7.32}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -552,8 +541,12 @@ MonoBehaviour:
   _cursorPrefab: {fileID: 5282792672736169000, guid: 283e324e33cd7865ebd56f2d850a30bb, type: 3}
   _cursorOk: {fileID: 2100000, guid: 827381457d663a1f199f9f4bee77a4d7, type: 2}
   _cursorNo: {fileID: 2100000, guid: f546ca5ea66c51f478d2f536f7abee0a, type: 2}
-  _turretPrefab: {fileID: 631238819052588991, guid: 7c51817acdddd82f083d74fde0a8d589, type: 3}
   _targetPosition: {x: 0, y: 0}
   _targetObject: {fileID: 1620090488}
   _spawnerPosition: {x: 15, y: 7}
-  _spawnerObject: {fileID: 594883083}
+  _spawnerObject: {fileID: 2137945670}
+--- !u!1 &2137945670 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4594838527380583400, guid: 35a5200f678c600f49449c199357d012, type: 3}
+  m_PrefabInstance: {fileID: 1609167512}
+  m_PrefabAsset: {fileID: 0}

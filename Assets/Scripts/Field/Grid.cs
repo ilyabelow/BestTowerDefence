@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using NUnit.Framework;
 using UnityEngine;
 
 namespace Field
@@ -22,8 +23,15 @@ namespace Field
         private readonly GridPathfinder _gridPathfinder;
 
         public Node StartNode => this[_start];
-
+        public Vector2Int StartCoord => _start;
         public Node TargetNode => this[_target];
+        public Vector2Int TargetCoord => _target;
+
+        private Vector2Int _selectedCoord;
+
+        public Vector2Int SelectedCoord => _selectedCoord;
+        public Node SelectedNode => this[_selectedCoord];
+        public bool HasSelectedNode { get; private set; }
 
         public Grid(uint width, uint height, Vector2Int target, Vector2Int start)
         {
@@ -61,6 +69,18 @@ namespace Field
         public void UpdatePaths()
         {
             _gridPathfinder.UpdateField();
+        }
+
+        public void SelectNode(Vector2Int coord)
+        {
+            _selectedCoord = coord;
+            HasSelectedNode = true;
+
+        }
+        
+        public void UnselectNode()
+        {
+            HasSelectedNode = false;
         }
     }
 }

@@ -1,13 +1,16 @@
+using Enemy;
+using Turret;
 using UnityEditor;
 using UnityEngine;
 
-namespace Assets
+namespace Runtime
 {
     [CreateAssetMenu(fileName = "Level", menuName = "Assets/LevelAsset", order = 1)]
     public class LevelAsset : ScriptableObject
     {
         public SceneAsset SceneAsset;
         public SpawnWave[] SpawnWaves;
+        public TurretAsset[] TurretMarket;
     }
 
     // Moved waves in one level asset because it's more convenient
@@ -20,4 +23,6 @@ namespace Assets
 
         public float TimeBeforeStartWave;
     }
+    
+    
 }

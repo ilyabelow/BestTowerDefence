@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a15cf611c2a447f8bff59ea73bde0819, type: 3}
   m_Name: EnemyBob
   m_EditorClassIdentifier: 
-  _viewPrefab: {fileID: 3877720852257469275, guid: 2988c79d8720b25d1b8a1817a1977ea1, type: 3}
-  _startHealth: 200
-  _speed: 3
+  EnemyPrefab: {fileID: 3877720852257469275, guid: 2988c79d8720b25d1b8a1817a1977ea1, type: 3}
+  MovementType: 0
+  StartHealth: 100
+  Speed: 4

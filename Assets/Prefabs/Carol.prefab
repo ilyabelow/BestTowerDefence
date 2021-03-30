@@ -10,9 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 8621717577963453453}
   - component: {fileID: 184276317525557633}
+  - component: {fileID: 3694034980862876460}
   m_Layer: 0
   m_Name: Carol
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -46,6 +47,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36238674931c43ebb68c2212c32396ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!136 &3694034980862876460
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 752705192131390643}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.44183
+  m_Height: 1.355211
+  m_Direction: 2
+  m_Center: {x: 0, y: 2, z: 0.06407666}
 --- !u!1 &1081658664085149557
 GameObject:
   m_ObjectHideFlags: 0
@@ -137,7 +152,7 @@ CapsuleCollider:
   m_GameObject: {fileID: 1081658664085149557}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   m_Radius: 0.5
   m_Height: 2
   m_Direction: 1
@@ -233,7 +248,7 @@ CapsuleCollider:
   m_GameObject: {fileID: 2577262249466830124}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   m_Radius: 0.5000001
   m_Height: 2
   m_Direction: 1
@@ -329,7 +344,7 @@ MeshCollider:
   m_GameObject: {fileID: 8121047311959953629}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   m_Convex: 0
   m_CookingOptions: 30

@@ -1,12 +1,11 @@
 using System;
 using Turret;
-using Unit;
 using UnityEngine;
 using Object = UnityEngine.Object;
 
 namespace Field
 {
-    public class MovementCursor : MonoBehaviour
+    public class GridHolder : MonoBehaviour
     {
         // Grid params
         [SerializeField] private uint _gridWidth;
@@ -16,10 +15,7 @@ namespace Field
         [SerializeField] private GameObject _cursorPrefab;
         [SerializeField] private Material _cursorOk;
         [SerializeField] private Material _cursorNo;
-
-
-        [SerializeField] private TurretAgent _turretPrefab;
-
+        
         private GameObject _cursor;
         private Camera _camera;
 
@@ -30,7 +26,7 @@ namespace Field
         [SerializeField] private Vector2Int _targetPosition;
         [SerializeField] private GameObject _targetObject;
         [SerializeField] private Vector2Int _spawnerPosition;
-        [SerializeField] private EnemySpawner _spawnerObject;
+        [SerializeField] private GameObject _spawnerObject;
 
         private readonly Vector3 _iVector = Vector3.right;
         private readonly Vector3 _jVector = Vector3.forward;
@@ -65,6 +61,7 @@ namespace Field
             {
                 if (hit.transform != transform) // temp solution?
                 {
+                    _grid.UnselectNode();
                     _cursor.SetActive(false); //disable if ray did not reach the plane
                     return;
                 }
@@ -74,33 +71,8 @@ namespace Field
                 Vector2Int pos = new Vector2Int((int) (difference.x / _nodeSize), (int) (difference.z / _nodeSize));
                 _cursor.transform.position = _grid[pos].Position;
 
-                Node node = _grid[pos];
-                bool canBeOccupied = _grid.CanBeOccupied(pos);
-                if (canBeOccupied)
-                {
-                    _cursor.GetComponent<MeshRenderer>().material = _cursorOk;
-                }
-                else
-                {
-                    _cursor.GetComponent<MeshRenderer>().material = _cursorNo;
-                }
-                if (Input.GetMouseButtonDown(0))
-                {
-                    if (!node.Occupied)
-                    {
-                        if (canBeOccupied) 
-                        {
-                            node.Occupy(Instantiate(_turretPrefab, node.Position, Quaternion.identity).gameObject);
-                            _grid.UpdatePaths();
-                        }
-                    }
-                    else
-                    {
-                        node.Release();
-                        _grid.UpdatePaths();
-                    }
-
-                }
+                _cursor.GetComponent<MeshRenderer>().material =  _grid.CanBeOccupied(pos) ? _cursorOk : _cursorNo;
+                _grid.SelectNode(pos);
             }
             else
             {

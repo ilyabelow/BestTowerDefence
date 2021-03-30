@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a15cf611c2a447f8bff59ea73bde0819, type: 3}
   m_Name: EnemyAlice
   m_EditorClassIdentifier: 
-  _viewPrefab: {fileID: 648289660911566070, guid: 11c4a662072d533068fea9c433d5c2ad, type: 3}
-  _startHealth: 100
-  _speed: 5
+  EnemyPrefab: {fileID: 648289660911566070, guid: 11c4a662072d533068fea9c433d5c2ad, type: 3}
+  MovementType: 0
+  StartHealth: 200
+  Speed: 2
