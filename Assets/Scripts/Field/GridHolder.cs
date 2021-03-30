@@ -64,17 +64,9 @@ namespace Field
         {
             Vector3 mousePosition = Input.mousePosition;
             Ray ray = _camera.ScreenPointToRay(mousePosition);
-            if (Physics.Raycast(ray, out RaycastHit hit))
+            if (Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity, LayerMask.GetMask("GridHolder")))
             {
-                if (hit.transform != transform) // temp solution?
-                {
-                    _grid.UnselectNode();
-                    _cursor.SetActive(false); //disable if ray did not reach the plane
-                    return;
-                }
-
                 _cursor.SetActive(true);
-
                 Vector2Int pos = GridPosition(hit.point);
                 _cursor.transform.position = _grid[pos].Position;
                 _cursorMeshRenderer.material = _grid.CanBeOccupied(pos) ? _cursorOk : _cursorNo;

@@ -29,7 +29,6 @@ namespace Turret.Weapon.Projectile
             _view = view;
             _countdown = _asset.RechargeTime;
             _closeNodes = Game.Player.Grid.GetNodesInCircle(view.transform.position, _asset.MaxDistance);
-
             // Beautification
             _idleRotationDirection = ((int) (UnityEngine.Random.value * 2)) * 2 - 1;
             _view.Tower.Rotate(Vector3.up, UnityEngine.Random.value * 360);
@@ -41,6 +40,14 @@ namespace Turret.Weapon.Projectile
             TickFollow();
             TickShooting();
             TickProjectiles();
+        }
+
+        public void Clean()
+        {
+            foreach (var projectile in _projectiles)
+            {
+                projectile.HandleHit();
+            }
         }
 
         private void TickFollow()
@@ -73,7 +80,6 @@ namespace Turret.Weapon.Projectile
 
             _countdown = 0;
             _closestEnemy = EnemySearch.GetClosestEnemy(_view.transform.position, _asset.MaxDistance, _closeNodes);
-
 
             if (_closestEnemy != null)
             {

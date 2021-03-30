@@ -51,6 +51,7 @@ namespace Turret
         private void RemoveTurret(Node node)
         {
             var data = node.Release();
+            data.Weapon.Clean();
             Object.Destroy(data.View.gameObject);
             Game.Player.TurretRemoved(data);
         }
