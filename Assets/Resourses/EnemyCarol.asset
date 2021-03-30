@@ -15,4 +15,4 @@ MonoBehaviour:
   EnemyPrefab: {fileID: 184276317525557633, guid: fb68d88058d2f9199bc9c595f14a473c, type: 3}
   MovementType: 1
   StartHealth: 50
-  Speed: 4
+  Speed: 1

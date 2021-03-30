@@ -23,7 +23,12 @@ namespace Turret.Weapon.Projectile.Bullet
 
         private void OnTriggerEnter(Collider other)
         {
+            if (other.CompareTag("Bullet"))
+            {
+                return;
+            }
             _didHit = true;
+
             if (other.CompareTag("Enemy"))
             {
                 EnemyView enemyView = other.GetComponent<EnemyView>();

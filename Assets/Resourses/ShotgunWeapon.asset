@@ -9,8 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 67bfc515baf54918874270a2f869aac1, type: 3}
-  m_Name: Turret1
+  m_Script: {fileID: 11500000, guid: fefdb7403cbc44eab73c4fa72eb813d0, type: 3}
+  m_Name: ShotgunWeapon
   m_EditorClassIdentifier: 
-  TurretPrefab: {fileID: 8477270041334444987, guid: 022dd186fdeca1a0b8d2389aa148de72, type: 3}
-  WeaponAsset: {fileID: 11400000, guid: d0ffac16a6a0e85df81b0368b79dc8ba, type: 2}
+  ProjectileAsset: {fileID: 11400000, guid: fc106707ee6e3654382b57a87fec84aa, type: 2}
+  RechargeTime: 1
+  MaxDistance: 10
+  IdleRotationSpeed: 0.5

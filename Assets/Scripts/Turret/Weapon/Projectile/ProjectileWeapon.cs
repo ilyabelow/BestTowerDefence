@@ -9,11 +9,11 @@ namespace Turret.Weapon.Projectile
 {
     public class ProjectileWeapon : IWeapon
     {
-        private readonly List<IProjectile> _projectiles = new List<IProjectile>();
+        protected readonly List<IProjectile> _projectiles = new List<IProjectile>();
 
-        private readonly ProjectileWeaponAsset _asset;
+        protected readonly ProjectileWeaponAsset _asset;
 
-        private readonly TurretView _view;
+        protected readonly TurretView _view;
 
         private float _countdown;
 
@@ -37,9 +37,9 @@ namespace Turret.Weapon.Projectile
 
         public void TickWeapon()
         {
+            TickProjectiles();
             TickFollow();
             TickShooting();
-            TickProjectiles();
         }
 
         public void Clean()
@@ -105,7 +105,7 @@ namespace Turret.Weapon.Projectile
             _projectiles.RemoveAll(projectile => projectile == null);
         }
 
-        private void Shoot()
+        protected virtual void Shoot()
         {
             _projectiles.Add(_asset.ProjectileAsset.CreateProjectile(_view.ProjectileOrigin.position,
                 _view.ProjectileOrigin.forward));

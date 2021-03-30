@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: BulletGun
   m_EditorClassIdentifier: 
   ProjectileAsset: {fileID: 11400000, guid: fc106707ee6e3654382b57a87fec84aa, type: 2}
-  RechargeTime: 0.1
+  RechargeTime: 0.5
   MaxDistance: 5
   IdleRotationSpeed: 0.5
