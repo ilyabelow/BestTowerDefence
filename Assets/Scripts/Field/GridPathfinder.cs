@@ -21,23 +21,20 @@ namespace Field
     public class GridPathfinder
     {
         private static readonly float Sqrt2 = (float) Math.Sqrt(2);
-
-
+        
         private readonly Grid _grid;
-        private readonly Vector2Int _target;
         private readonly Vector2Int _start;
+        private readonly Vector2Int _target;
 
-        public GridPathfinder(Grid grid, Vector2Int target, Vector2Int start)
+        public GridPathfinder(Grid grid)
         {
             _grid = grid;
-            _target = target;
-            _start = start;
+            _start = grid.StartCoord;
+            _target = grid.TargetCoord;
         }
 
         public void UpdateField()
         {
-            // Update next nodes
-
             foreach (Node node in _grid.EnumerateAllNodes())
             {
                 node.Reset();
@@ -78,25 +75,25 @@ namespace Field
             _grid[_target].Availability = OccupationAvailability.CanNotOccupy;
         }
 
-        public bool CanBeOccupied(Vector2Int nodeToTest)
+        public bool CanBeOccupied(Vector2Int coord)
         {
-            Node node = _grid[nodeToTest];
+            Node node = _grid[coord];
             if (node.Availability == OccupationAvailability.CanOccupy) return true;
             if (node.Availability == OccupationAvailability.CanNotOccupy) return false;
 
-            bool testResult = TestNode(nodeToTest);
+            bool testResult = TestNode(coord);
             node.Availability = testResult ? OccupationAvailability.CanOccupy : OccupationAvailability.CanNotOccupy;
             return testResult;
         }
 
-        private bool TestNode(Vector2Int nodeToTest)
+        private bool TestNode(Vector2Int coord)
         {
             foreach (Node node in _grid.EnumerateAllNodes())
             {
                 node.Visited = false;
             }
 
-            _grid[nodeToTest].Visited = true; //!!
+            _grid[coord].Visited = true; //!!
 
             Queue<Vector2Int> queue = new Queue<Vector2Int>();
             queue.Enqueue(_target);
@@ -115,17 +112,17 @@ namespace Field
             return _grid[_start].Visited;
         }
 
-        private IEnumerable<Connection> GetNeighbours(Vector2Int coordinate)
+        private IEnumerable<Connection> GetNeighbours(Vector2Int coord)
         {
-            Vector2Int rightCoordinate = coordinate + Vector2Int.right;
-            Vector2Int leftCoordinate = coordinate + Vector2Int.left;
-            Vector2Int upCoordinate = coordinate + Vector2Int.up;
-            Vector2Int downCoordinate = coordinate + Vector2Int.down;
+            Vector2Int rightCoordinate = coord + Vector2Int.right;
+            Vector2Int leftCoordinate = coord + Vector2Int.left;
+            Vector2Int upCoordinate = coord + Vector2Int.up;
+            Vector2Int downCoordinate = coord + Vector2Int.down;
 
-            Vector2Int rightDownCoordinate = coordinate + Vector2Int.right + Vector2Int.down;
-            Vector2Int leftUpCoordinate = coordinate + Vector2Int.left + Vector2Int.up;
-            Vector2Int upRightCoordinate = coordinate + Vector2Int.up + Vector2Int.right;
-            Vector2Int downLeftCoordinate = coordinate + Vector2Int.down + Vector2Int.left;
+            Vector2Int rightDownCoordinate = coord + Vector2Int.right + Vector2Int.down;
+            Vector2Int leftUpCoordinate = coord + Vector2Int.left + Vector2Int.up;
+            Vector2Int upRightCoordinate = coord + Vector2Int.up + Vector2Int.right;
+            Vector2Int downLeftCoordinate = coord + Vector2Int.down + Vector2Int.left;
 
             bool hasRightNode = rightCoordinate.x < _grid.Width && !_grid[rightCoordinate].Occupied;
             bool hasLeftNode = leftCoordinate.x >= 0 && !_grid[leftCoordinate].Occupied;

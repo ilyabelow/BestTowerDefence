@@ -8,8 +8,8 @@ namespace Turret
 {
     public class TurretSpawnController : IController
     {
-        private Grid _grid;
-        private TurretMarket _turretMarket;
+        private readonly Grid _grid;
+        private readonly TurretMarket _turretMarket;
 
         public TurretSpawnController(Grid grid, TurretMarket turretMarket)
         {
@@ -21,6 +21,7 @@ namespace Turret
         {
             if (!_grid.HasSelectedNode) return;
             if (!Input.GetMouseButtonDown(0)) return;
+            
             Node node = _grid.SelectedNode;
             if (!node.Occupied)
             {

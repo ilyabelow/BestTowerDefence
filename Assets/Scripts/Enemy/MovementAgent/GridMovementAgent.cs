@@ -3,40 +3,39 @@ using UnityEngine;
 using Grid = Field.Grid;
 using Vector3 = UnityEngine.Vector3;
 
-namespace Enemy
+namespace Enemy.MovementAgent
 {
     public class GridMovementAgent : IMovementAgent
     {
-        private readonly EnemyData _data;
-        private readonly Transform _transform;
-        private readonly float _speed;
+        private readonly EnemyView _view;
+        
         private Node _targetNode;
+        private readonly float _speed;
 
 
-        public GridMovementAgent(EnemyData data, Grid grid, Transform transform, float speed)
+        public GridMovementAgent(EnemyView view, Grid grid, float speed)
         {
             _targetNode = grid.StartNode.NextNode;
-            _data = data;
-            _transform = transform;
+            _view = view;
             _speed = speed;
-            _transform.position = grid.StartNode.Position;
+            _view.transform.position = grid.StartNode.Position;
         }
 
         public void TickMovement()
         {
-            Vector3 diff = _targetNode.Position - _transform.position;
+            Vector3 diff = _targetNode.Position - _view.transform.position;
             if (diff.magnitude <= Time.deltaTime * _speed)
             {
                 MoveOn(diff);
-                _targetNode.EnemyLeft(_data);
+                _targetNode.EnemyLeft(_view.Data);
                 _targetNode = _targetNode.NextNode;
                 if (_targetNode == null)
                 {
-                    _data.IsAlive = false;
+                    _view.Data.Die();
                 }
                 else
                 {
-                    _targetNode.EnemyEntered(_data);
+                    _targetNode.EnemyEntered(_view.Data);
                 }
             }
             else
@@ -46,9 +45,8 @@ namespace Enemy
         }
         private void MoveOn(Vector3 dx)
         {
-            _transform.position += dx;
-            var angle = Vector3.Angle(dx, Vector3.forward);
-            _transform.eulerAngles = new Vector3(0, dx.x < 0 ? 360 - angle : angle, 0); // bodge
+            _view.transform.position += dx;
+            _view.transform.LookAt(dx);
         }
     }
 }

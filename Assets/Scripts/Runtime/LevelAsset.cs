@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Runtime
 {
-    [CreateAssetMenu(fileName = "Level", menuName = "Assets/LevelAsset", order = 1)]
+    [CreateAssetMenu(fileName = "Level", menuName = "Assets/LevelAsset")]
     public class LevelAsset : ScriptableObject
     {
         public SceneAsset SceneAsset;

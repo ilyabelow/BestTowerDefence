@@ -1,25 +1,26 @@
-using Assets;
+using Enemy.MovementAgent;
 using Runtime;
 using UnityEngine;
+using Grid = Field.Grid;
 
 namespace Enemy
 {
     public class SpawnController : IController
     {
+        private readonly Grid _grid;
+        private readonly SpawnWave[] _spawnWaves;
+        
         private float _spawnStartTime;
         private float _passedTimeAtPreviousFrame;
-
-        private readonly SpawnWave[] _spawnWaves;
-
-
-        public SpawnController(SpawnWave[] spawnWaves)
+        
+        public SpawnController(Grid grid, SpawnWave[] spawnWaves)
         {
+            _grid = grid;
             _spawnWaves = spawnWaves;
         }
 
         public void Tick()
         {
-            // Just copied and pasted the algo TODO make up a better solution
             float passedTime = Time.time - _spawnStartTime;
             float timeToSpawn = 0f;
             foreach (SpawnWave wave in _spawnWaves)
@@ -59,17 +60,17 @@ namespace Enemy
             data.AttachView(view);
             view.AttachData(data);
 
-            // Very bad ((
+            // Very bad =(
             switch (asset.MovementType)
             {
                 case MovementType.Grid:
                     view.AttachMovementAgent(
-                        new GridMovementAgent(data, Game.Player.Grid, view.transform, asset.Speed)
+                        new GridMovementAgent(view, _grid, asset.Speed)
                     );
                     break;
                 case MovementType.Flying:
                     view.AttachMovementAgent(
-                        new AirMovementAgent(data, Game.Player.Grid, view.transform, asset.Speed)
+                        new AirMovementAgent(view, _grid, asset.Speed)
                     );
                     break;
             }

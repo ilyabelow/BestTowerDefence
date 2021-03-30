@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Assets
 {
-    [CreateAssetMenu(fileName = "AssetRoot", menuName = "Assets/AssetRoot", order = 0)]
+    [CreateAssetMenu(fileName = "AssetRoot", menuName = "Assets/AssetRoot")]
     public class AssetRoot : ScriptableObject
     {
         public Runner RunnerPrefab;

@@ -1,4 +1,3 @@
-using Enemy;
 using UnityEngine;
 
 namespace Enemy
@@ -9,7 +8,7 @@ namespace Enemy
         Flying
     }
 
-    [CreateAssetMenu(fileName = "Enemy", menuName = "Assets/Enemy Asset", order = 2)]
+    [CreateAssetMenu(fileName = "Enemy", menuName = "Assets/Enemy Asset")]
     public class EnemyAsset : ScriptableObject
     {
         public EnemyView EnemyPrefab;

@@ -9,7 +9,7 @@ namespace Turret.Weapon.Projectile
 {
     public class ProjectileWeapon : IWeapon
     {
-        private List<IProjectile> _projectiles = new List<IProjectile>();
+        private readonly List<IProjectile> _projectiles = new List<IProjectile>();
 
         private readonly ProjectileWeaponAsset _asset;
 
@@ -81,13 +81,12 @@ namespace Turret.Weapon.Projectile
             _countdown = 0;
             _closestEnemy = EnemySearch.GetClosestEnemy(_view.transform.position, _asset.MaxDistance, _closeNodes);
 
-            if (_closestEnemy != null)
-            {
-                TickFollow();
-                Shoot();
-                _countdown = _asset.RechargeTime;
-                _idleRotationDirection = -_idleRotationDirection;
-            }
+            if (_closestEnemy == null) return;
+            // TODO fix bug when _closestEnemy becomes null after TickShoot???
+            TickFollow();
+            Shoot();
+            _countdown = _asset.RechargeTime;
+            _idleRotationDirection = -_idleRotationDirection;
         }
 
         private void TickProjectiles()

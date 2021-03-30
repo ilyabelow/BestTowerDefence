@@ -1,4 +1,5 @@
 using System;
+using Enemy.MovementAgent;
 using UnityEngine;
 
 namespace Enemy
@@ -6,11 +7,9 @@ namespace Enemy
     public class EnemyView : MonoBehaviour
     {
         private EnemyData _enemyData;
-
         public EnemyData Data => _enemyData;
 
         private IMovementAgent _movementAgent;
-
         public IMovementAgent MovementAgent => _movementAgent;
 
         public void AttachData(EnemyData data)

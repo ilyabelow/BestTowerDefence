@@ -1,4 +1,4 @@
-namespace Enemy
+namespace Enemy.MovementAgent
 {
     public interface IMovementAgent
     {

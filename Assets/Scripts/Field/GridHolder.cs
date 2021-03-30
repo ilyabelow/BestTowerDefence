@@ -16,14 +16,12 @@ namespace Field
         [SerializeField] private GameObject _cursorPrefab;
         [SerializeField] private Material _cursorOk;
         [SerializeField] private Material _cursorNo;
-
         private GameObject _cursor;
-        private Camera _camera;
-
-        private Vector3 _offset;
-
+        private MeshRenderer _cursorMeshRenderer;
+        
         private Grid _grid;
         public Grid Grid => _grid;
+        
         [SerializeField] private Vector2Int _targetPosition;
         [SerializeField] private GameObject _targetObject;
         [SerializeField] private Vector2Int _spawnerPosition;
@@ -31,8 +29,9 @@ namespace Field
 
         private readonly Vector3 _iVector = Vector3.right;
         private readonly Vector3 _jVector = Vector3.forward;
-        private MeshRenderer _cursorMeshRenderer;
+        private Vector3 _offset;
 
+        private Camera _camera;
 
         private void Awake()
         {
@@ -74,6 +73,7 @@ namespace Field
             }
             else
             {
+                _grid.UnselectNode();
                 _cursor.SetActive(false); //disable if cursor is not on the plane
             }
         }
@@ -109,6 +109,14 @@ namespace Field
             _spawnerObject.transform.position = RealPosition(_spawnerPosition.x, _spawnerPosition.y);
         }
 
+
+        private void OnValidate()
+        {
+            ResizePlane();
+        }
+        
+      /*
+        
         private void OnDrawGizmos()
         {
             DrawGizmosGrid();
@@ -117,12 +125,6 @@ namespace Field
                 DrawGizmosArrows();
             }
         }
-
-        private void OnValidate()
-        {
-            ResizePlane();
-        }
-
         private void DrawGizmosGrid()
         {
             Gizmos.color = Color.black;
@@ -170,5 +172,6 @@ namespace Field
                 Gizmos.DrawSphere(end, 0.1f);
             }
         }
+        */
     }
 }

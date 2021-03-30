@@ -10,40 +10,42 @@ namespace Field
 
         private readonly uint _width;
         private readonly uint _height;
-        private readonly Vector2Int _target;
-        private readonly Vector2Int _start;
-        private readonly float _nodeSize;
-        private readonly Vector3 _offset;
-
-        public uint Width => _width;
-
-        public uint Height => _height;
 
         public Node this[int x, int y] => _nodes[x, y];
         public Node this[Vector2Int coord] => _nodes[coord.x, coord.y];
+        
+        public uint Width => _width;
+        public uint Height => _height;
+        
+        private readonly Vector2Int _targetCoord;
+        private readonly Vector2Int _startCoord;
+        
+        public Node StartNode => this[_startCoord];
+        public Node TargetNode => this[_targetCoord];
 
-        private readonly GridPathfinder _gridPathfinder;
-
-        public Node StartNode => this[_start];
-        public Vector2Int StartCoord => _start;
-        public Node TargetNode => this[_target];
-        public Vector2Int TargetCoord => _target;
+        public Vector2Int StartCoord => _startCoord;
+        public Vector2Int TargetCoord => _targetCoord;
+        
 
         private Vector2Int _selectedCoord;
-
         public Vector2Int SelectedCoord => _selectedCoord;
         public Node SelectedNode => this[_selectedCoord];
         public bool HasSelectedNode { get; private set; }
+        
+        private readonly float _nodeSize;
+        private readonly Vector3 _offset;
+        
+        private readonly GridPathfinder _gridPathfinder;
 
-        public Grid(uint width, uint height, Vector2Int target, Vector2Int start, float nodeSize, Vector3 offset)
+        public Grid(uint width, uint height, Vector2Int targetCoord, Vector2Int startCoord, float nodeSize, Vector3 offset)
         {
             _width = width;
             _height = height;
-            _target = target;
-            _start = start;
+            _targetCoord = targetCoord;
+            _startCoord = startCoord;
             _nodeSize = nodeSize;
             _offset = offset;
-            _gridPathfinder = new GridPathfinder(this, target, start);
+            _gridPathfinder = new GridPathfinder(this);
             _nodes = new Node[_width, _height];
             for (int i = 0; i < _width; i++)
             {
@@ -54,9 +56,9 @@ namespace Field
             }
         }
 
-        public bool CanBeOccupied(Vector2Int node)
+        public bool CanBeOccupied(Vector2Int coord)
         {
-            return _gridPathfinder.CanBeOccupied(node);
+            return _gridPathfinder.CanBeOccupied(coord);
         }
 
         public IEnumerable<Node> EnumerateAllNodes()
@@ -79,7 +81,6 @@ namespace Field
         {
             _selectedCoord = coord;
             HasSelectedNode = true;
-
         }
         
         public void UnselectNode()

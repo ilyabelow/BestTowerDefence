@@ -8,7 +8,6 @@ namespace Turret
         public TurretView View => _view;
 
         private IWeapon _weapon;
-
         public IWeapon Weapon => _weapon;
 
         private TurretAsset _asset;

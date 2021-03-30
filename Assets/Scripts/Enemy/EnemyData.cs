@@ -1,18 +1,15 @@
-using Assets;
-using Runtime;
-using UnityEngine;
-
 namespace Enemy
 {
-    // TODO events??
     public class EnemyData
     {
         private EnemyView _view;
         public EnemyView View => _view;
 
+        private bool _isAlive = true;
+        public bool IsAlive => _isAlive;
+        
         private float _health;
 
-        public bool IsAlive = true;
 
         public EnemyData(EnemyAsset asset)
         {
@@ -29,8 +26,13 @@ namespace Enemy
             _health -= damage;
             if (_health <= 0)
             {
-                IsAlive = false;
+                Die();
             }
+        }
+
+        public void Die()
+        {
+            _isAlive = false;
         }
     }
 }

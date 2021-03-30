@@ -39,12 +39,12 @@ namespace Runtime
         {
             _controllers = new List<IController>
             {
-                new SpawnController(Game.CurrentLevel.SpawnWaves),
+                new SpawnController(Game.Player.Grid, Game.CurrentLevel.SpawnWaves),
                 new GridRaycastController(Game.Player.GridHolder),
                 new TurretSpawnController(Game.Player.Grid, Game.Player.TurretMarket),
                 new TurretShootController(),
                 new MovementController(),
-                new DeathController()
+                new DeathController(Game.Player.Grid)
             };
         }
 
