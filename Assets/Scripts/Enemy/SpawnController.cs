@@ -64,12 +64,12 @@ namespace Enemy
             {
                 case MovementType.Grid:
                     view.AttachMovementAgent(
-                        new GridMovementAgent(Game.Player.GridHolder.Grid, view.transform, asset.Speed)
+                        new GridMovementAgent(data, Game.Player.Grid, view.transform, asset.Speed)
                     );
                     break;
                 case MovementType.Flying:
                     view.AttachMovementAgent(
-                        new AirMovementAgent(Game.Player.GridHolder.Grid, view.transform, asset.Speed)
+                        new AirMovementAgent(data, Game.Player.Grid, view.transform, asset.Speed)
                     );
                     break;
             }

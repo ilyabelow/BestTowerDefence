@@ -22,7 +22,12 @@ namespace Enemy
                 Game.Player.EnemyDied(enemyData);
                 Object.Destroy(enemyData.View.gameObject);
             }
-            
+
+            // Temporal solution!!!!!!!!!!!!!!!!!
+            foreach (var node in Game.Player.Grid.EnumerateAllNodes())
+            {
+                node.CleanDead();
+            }
         }
 
         public void OnStart()

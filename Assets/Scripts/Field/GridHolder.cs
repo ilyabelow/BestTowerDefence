@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using Turret;
 using UnityEngine;
 using Object = UnityEngine.Object;
@@ -15,7 +16,7 @@ namespace Field
         [SerializeField] private GameObject _cursorPrefab;
         [SerializeField] private Material _cursorOk;
         [SerializeField] private Material _cursorNo;
-        
+
         private GameObject _cursor;
         private Camera _camera;
 
@@ -30,17 +31,25 @@ namespace Field
 
         private readonly Vector3 _iVector = Vector3.right;
         private readonly Vector3 _jVector = Vector3.forward;
+        private MeshRenderer _cursorMeshRenderer;
 
 
         private void Awake()
         {
+            CreateGrid();
             ResizePlane();
+            PositionMarkers();
 
             _camera = Camera.main;
             _cursor = Instantiate(_cursorPrefab, Vector3.zero, Quaternion.identity);
             _cursor.transform.localScale = _nodeSize * (Vector3.forward + Vector3.right) + 0.1f * Vector3.up;
+            _cursorMeshRenderer = _cursor.GetComponent<MeshRenderer>();
+            _grid.UpdatePaths();
+        }
 
-            _grid = new Grid(_gridWidth, _gridHeight, _targetPosition, _spawnerPosition);
+        private void CreateGrid()
+        {
+            _grid = new Grid(_gridWidth, _gridHeight, _targetPosition, _spawnerPosition, _nodeSize, _offset);
 
             for (int i = 0; i < _gridWidth; i++)
             {
@@ -49,10 +58,8 @@ namespace Field
                     _grid[i, j].Position = RealPosition(i, j);
                 }
             }
-            PositionMarkers();
-            _grid.UpdatePaths();
         }
-        
+
         public void Raycast()
         {
             Vector3 mousePosition = Input.mousePosition;
@@ -67,11 +74,10 @@ namespace Field
                 }
 
                 _cursor.SetActive(true);
-                Vector3 difference = hit.point - _offset;
-                Vector2Int pos = new Vector2Int((int) (difference.x / _nodeSize), (int) (difference.z / _nodeSize));
-                _cursor.transform.position = _grid[pos].Position;
 
-                _cursor.GetComponent<MeshRenderer>().material =  _grid.CanBeOccupied(pos) ? _cursorOk : _cursorNo;
+                Vector2Int pos = GridPosition(hit.point);
+                _cursor.transform.position = _grid[pos].Position;
+                _cursorMeshRenderer.material = _grid.CanBeOccupied(pos) ? _cursorOk : _cursorNo;
                 _grid.SelectNode(pos);
             }
             else
@@ -85,6 +91,32 @@ namespace Field
             return _offset + _nodeSize * (_iVector * i + _jVector * j + 0.5f * (_iVector + _jVector));
         }
 
+
+        private Vector2Int GridPosition(Vector3 point)
+        {
+            Vector3 difference = point - _offset;
+            int x = (int) (difference.x / _nodeSize);
+            int y = (int) (difference.z / _nodeSize);
+            return new Vector2Int(x, y);
+        }
+
+        private void ResizePlane()
+        {
+            float width = _gridWidth * _nodeSize;
+            float height = _gridHeight * _nodeSize;
+
+            // Default plane size is 10 by 10 (bodge)
+            var transformThis = transform;
+            transformThis.localScale = new Vector3(width * 0.1f, 1f, height * 0.1f);
+            _offset = transformThis.position - 0.5f * new Vector3(width, 0f, height);
+        }
+
+        private void PositionMarkers()
+        {
+            _targetObject.transform.position = RealPosition(_targetPosition.x, _targetPosition.y);
+            _spawnerObject.transform.position = RealPosition(_spawnerPosition.x, _spawnerPosition.y);
+        }
+
         private void OnDrawGizmos()
         {
             DrawGizmosGrid();
@@ -92,6 +124,11 @@ namespace Field
             {
                 DrawGizmosArrows();
             }
+        }
+
+        private void OnValidate()
+        {
+            ResizePlane();
         }
 
         private void DrawGizmosGrid()
@@ -140,30 +177,6 @@ namespace Field
                 Gizmos.DrawLine(start, end);
                 Gizmos.DrawSphere(end, 0.1f);
             }
-        }
-
-        private void OnValidate()
-        {
-            ResizePlane();
-            PositionMarkers();
-        }
-
-
-        private void ResizePlane()
-        {
-            float width = _gridWidth * _nodeSize;
-            float height = _gridHeight * _nodeSize;
-
-            // Default plane size is 10 by 10 (bodge)
-            var transformThis = transform;
-            transformThis.localScale = new Vector3(width * 0.1f, 1f, height * 0.1f);
-            _offset = transformThis.position - 0.5f * new Vector3(width, 0f, height);
-        }
-
-        private void PositionMarkers()
-        {
-            _targetObject.transform.position = RealPosition(_targetPosition.x, _targetPosition.y);
-            _spawnerObject.transform.position = RealPosition(_spawnerPosition.x, _spawnerPosition.y);
         }
     }
 }

@@ -41,7 +41,7 @@ namespace Runtime
             {
                 new SpawnController(Game.CurrentLevel.SpawnWaves),
                 new GridRaycastController(Game.Player.GridHolder),
-                new TurretSpawnController(Game.Player.GridHolder.Grid, Game.Player.TurretMarket),
+                new TurretSpawnController(Game.Player.Grid, Game.Player.TurretMarket),
                 new TurretShootController(),
                 new MovementController(),
                 new DeathController()

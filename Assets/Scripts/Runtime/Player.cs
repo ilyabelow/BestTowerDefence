@@ -16,12 +16,14 @@ namespace Runtime
         public IReadOnlyList<TurretData> TurretDatas => _turretDatas;
         
         public readonly GridHolder GridHolder;
+        public readonly Grid Grid;
         public readonly TurretMarket TurretMarket;
 
 
         public Player()
         {
             GridHolder = Object.FindObjectOfType<GridHolder>();
+            Grid = GridHolder.Grid;
             TurretMarket = new TurretMarket(Game.CurrentLevel.TurretMarket);
         }
 

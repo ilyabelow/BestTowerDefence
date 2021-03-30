@@ -8,10 +8,17 @@ namespace Turret.Weapon.Projectile.Bullet
         private bool _didHit;
         private EnemyData _hitEnemy;
         private BulletAsset _asset;
+        private float _timeLeft = 5;
 
         public void TickMovement()
         {
             transform.Translate(transform.forward * (_asset.Speed * Time.deltaTime), Space.World);
+            // Missed bullets will eventually dissapear
+            _timeLeft -= Time.deltaTime;
+            if (_timeLeft < 0)
+            {
+                _didHit = true;
+            }
         }
 
         private void OnTriggerEnter(Collider other)

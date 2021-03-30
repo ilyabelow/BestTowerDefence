@@ -1,5 +1,7 @@
 using System.Collections.Generic;
 using Enemy;
+using Field;
+using Runtime;
 using UnityEngine;
 using Random = System.Random;
 
@@ -19,16 +21,19 @@ namespace Turret.Weapon.Projectile
 
         private EnemyData _closestEnemy;
 
+        private readonly List<Node> _closeNodes;
+
         public ProjectileWeapon(ProjectileWeaponAsset asset, TurretView view)
         {
             _asset = asset;
             _view = view;
             _countdown = _asset.RechargeTime;
+            _closeNodes = Game.Player.Grid.GetNodesInCircle(view.transform.position, _asset.MaxDistance);
 
             // Beautification
             _idleRotationDirection = ((int) (UnityEngine.Random.value * 2)) * 2 - 1;
             _view.Tower.Rotate(Vector3.up, UnityEngine.Random.value * 360);
-            _closestEnemy = EnemySearch.GetClosestEnemy(_view.transform.position, _asset.MaxDistance);
+            _closestEnemy = EnemySearch.GetClosestEnemyAnywhere(_view.transform.position, _asset.MaxDistance);
         }
 
         public void TickWeapon()
@@ -67,7 +72,7 @@ namespace Turret.Weapon.Projectile
             }
 
             _countdown = 0;
-            _closestEnemy = EnemySearch.GetClosestEnemy(_view.transform.position, _asset.MaxDistance);
+            _closestEnemy = EnemySearch.GetClosestEnemy(_view.transform.position, _asset.MaxDistance, _closeNodes);
 
 
             if (_closestEnemy != null)

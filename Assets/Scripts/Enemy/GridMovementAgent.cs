@@ -7,15 +7,16 @@ namespace Enemy
 {
     public class GridMovementAgent : IMovementAgent
     {
-
+        private readonly EnemyData _data;
         private readonly Transform _transform;
         private readonly float _speed;
         private Node _targetNode;
 
 
-        public GridMovementAgent(Grid grid, Transform transform, float speed)
+        public GridMovementAgent(EnemyData data, Grid grid, Transform transform, float speed)
         {
             _targetNode = grid.StartNode.NextNode;
+            _data = data;
             _transform = transform;
             _speed = speed;
             _transform.position = grid.StartNode.Position;
@@ -27,19 +28,22 @@ namespace Enemy
             if (diff.magnitude <= Time.deltaTime * _speed)
             {
                 MoveOn(diff);
+                _targetNode.EnemyLeft(_data);
                 _targetNode = _targetNode.NextNode;
+                if (_targetNode == null)
+                {
+                    _data.IsAlive = false;
+                }
+                else
+                {
+                    _targetNode.EnemyEntered(_data);
+                }
             }
             else
             {
                 MoveOn(diff.normalized * (Time.deltaTime * _speed));
             }
         }
-
-        public bool ReachedTarget()
-        {
-            return _targetNode == null;
-        }
-
         private void MoveOn(Vector3 dx)
         {
             _transform.position += dx;

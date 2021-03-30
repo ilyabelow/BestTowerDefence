@@ -12,6 +12,8 @@ namespace Field
         private readonly uint _height;
         private readonly Vector2Int _target;
         private readonly Vector2Int _start;
+        private readonly float _nodeSize;
+        private readonly Vector3 _offset;
 
         public uint Width => _width;
 
@@ -33,12 +35,14 @@ namespace Field
         public Node SelectedNode => this[_selectedCoord];
         public bool HasSelectedNode { get; private set; }
 
-        public Grid(uint width, uint height, Vector2Int target, Vector2Int start)
+        public Grid(uint width, uint height, Vector2Int target, Vector2Int start, float nodeSize, Vector3 offset)
         {
             _width = width;
             _height = height;
             _target = target;
             _start = start;
+            _nodeSize = nodeSize;
+            _offset = offset;
             _gridPathfinder = new GridPathfinder(this, target, start);
             _nodes = new Node[_width, _height];
             for (int i = 0; i < _width; i++)
@@ -81,6 +85,29 @@ namespace Field
         public void UnselectNode()
         {
             HasSelectedNode = false;
+        }
+
+        
+        public Node GetNodeAtPoint(Vector3 point)
+        {
+            Vector3 difference = point - _offset;
+            int x = (int) (difference.x / _nodeSize);
+            int y = (int) (difference.z / _nodeSize);
+            return this[x, y];
+        }
+        
+        
+        public List<Node> GetNodesInCircle(Vector3 point, float radius)
+        {
+            var list = new List<Node>();
+            foreach (var node in EnumerateAllNodes())
+            {
+                if ((node.Position - point).sqrMagnitude < radius * radius)
+                {
+                    list.Add(node);
+                }
+            }
+            return list;
         }
     }
 }

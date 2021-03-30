@@ -8,12 +8,7 @@ namespace Enemy
         {
             foreach (var enemyData in Game.Player.EnemyDatas)
             {
-                var agent = enemyData.View.MovementAgent;
-                agent.TickMovement();
-                if (agent.ReachedTarget())
-                {
-                    enemyData.IsAlive = false;
-                }
+                enemyData.View.MovementAgent.TickMovement();
             }
         }
 
