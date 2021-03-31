@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: GunFCool
   m_EditorClassIdentifier: 
   FieldPrefab: {fileID: 4738671299691736836, guid: ff6f862c42a3d73c8bed51d7705edf1f, type: 3}
-  DPS: 10
+  DPS: 20
   Radius: 10

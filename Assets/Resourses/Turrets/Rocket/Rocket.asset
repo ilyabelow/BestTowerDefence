@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Rocket
   m_EditorClassIdentifier: 
   RocketPrefab: {fileID: 2749849582813926007, guid: 6fe6ff6b9de235a9f9b6acf1c526cea7, type: 3}
-  Speed: 3
-  Damage: 10
+  Speed: 4
+  Damage: 30
   HitRadius: 3
   LifeTime: 5

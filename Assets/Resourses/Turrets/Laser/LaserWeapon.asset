@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: LaserWeapon
   m_EditorClassIdentifier: 
   Beam: {fileID: 5331662572279686544, guid: 7e92fab5344c1b8efa5e1b48bd5be8aa, type: 3}
-  DPS: 10
+  DPS: 15
   MaxDistance: 5

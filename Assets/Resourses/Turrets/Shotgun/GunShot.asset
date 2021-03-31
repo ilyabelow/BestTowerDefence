@@ -16,4 +16,4 @@ MonoBehaviour:
   RechargeTime: 1
   MaxDistance: 10
   IdleRotationSpeed: 0.5
-  BulletCount: 10
+  BulletCount: 5

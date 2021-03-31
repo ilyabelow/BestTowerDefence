@@ -5,8 +5,7 @@ namespace Turret.Spawn
 {
     public class TurretChooseController : IController
     {
-
-        private TurretMarket _market;
+        private readonly TurretMarket _market;
 
         public TurretChooseController(TurretMarket market)
         {
@@ -15,10 +14,14 @@ namespace Turret.Spawn
         
         public void Tick()
         {
-            float delta = Input.mouseScrollDelta.y;
-            if (delta == 0) return;
-            if (delta < 0) Game.Player.TurretMarket.ChooserBackward();
-            if (delta > 0) Game.Player.TurretMarket.ChooserForward();
+            if (Input.GetKeyDown(KeyCode.RightArrow))
+            {
+                _market.ChooserForward();
+            }
+            if (Input.GetKeyDown(KeyCode.LeftArrow))
+            {
+                _market.ChooserBackward();
+            }
         }
 
         public void OnStart()
