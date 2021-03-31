@@ -8,7 +8,7 @@ namespace Turret.Weapon.Projectile.Bullet
         private bool _didHit;
         private EnemyData _hitEnemy;
         private BulletAsset _asset;
-        private float _timeLeft = 5;
+        private float _timeLeft;
 
         public void TickMovement()
         {
@@ -47,6 +47,7 @@ namespace Turret.Weapon.Projectile.Bullet
         public void AttachAsset(BulletAsset asset)
         {
             _asset = asset;
+            _timeLeft = _asset.LifeTime;
         }
 
         public void HandleHit()

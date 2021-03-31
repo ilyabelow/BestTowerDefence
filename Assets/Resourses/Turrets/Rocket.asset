@@ -9,10 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6d947db4e4274d6e9c579fecfba25601, type: 3}
-  m_Name: BulletStd
+  m_Script: {fileID: 11500000, guid: f8a7ea1671a040b3b73cef932735a623, type: 3}
+  m_Name: Rocket
   m_EditorClassIdentifier: 
-  BulletPrefab: {fileID: 4749945841712867723, guid: 132f2df04332c4b65911d411e3124630, type: 3}
-  Speed: 10
-  Damage: 20
+  RocketPrefab: {fileID: 2749849582813926007, guid: 6fe6ff6b9de235a9f9b6acf1c526cea7, type: 3}
+  Speed: 3
+  Damage: 10
+  HitRadius: 3
   LifeTime: 5

@@ -54,8 +54,7 @@ namespace Turret.Weapon.Projectile
         {
             if (_closestEnemy != null)
             {
-                if (!_closestEnemy.IsAlive ||
-                    !EnemySearch.CheckReach(_view.transform.position, _closestEnemy, _asset.MaxDistance))
+                if (!_closestEnemy.IsAlive)
                 {
                     _closestEnemy = null;
                 }
@@ -82,9 +81,8 @@ namespace Turret.Weapon.Projectile
             _closestEnemy = EnemySearch.GetClosestEnemy(_view.transform.position, _closeNodes);
 
             if (_closestEnemy == null) return;
-            // TODO fix bug when _closestEnemy becomes null after TickShoot???
             TickFollow();
-            Shoot();
+            Shoot(_closestEnemy);
             _countdown = _asset.RechargeTime;
             _idleRotationDirection = -_idleRotationDirection;
         }
@@ -105,9 +103,9 @@ namespace Turret.Weapon.Projectile
             _projectiles.RemoveAll(projectile => projectile == null);
         }
 
-        protected virtual void Shoot()
+        protected virtual void Shoot(EnemyData who)
         {
-            _projectiles.Add(_asset.ProjectileAsset.CreateProjectile(_view.ProjectileOrigin.position, _view.ProjectileOrigin.forward));
+            _projectiles.Add(_asset.ProjectileAsset.CreateProjectile(_view.ProjectileOrigin.position, _view.ProjectileOrigin.forward, who));
         }
     }
 }

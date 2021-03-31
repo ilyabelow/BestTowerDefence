@@ -1,3 +1,4 @@
+using Enemy;
 using UnityEngine;
 
 namespace Turret.Weapon.Projectile.Bullet
@@ -9,7 +10,8 @@ namespace Turret.Weapon.Projectile.Bullet
         public Bullet BulletPrefab;
         public float Speed;
         public float Damage;
-        public override IProjectile CreateProjectile(Vector3 origin, Vector3 dir)
+        public float LifeTime;
+        public override IProjectile CreateProjectile(Vector3 origin, Vector3 dir, EnemyData target = null)
         {
             var bullet = Instantiate(BulletPrefab, origin, Quaternion.LookRotation(dir));
             bullet.AttachAsset(this);

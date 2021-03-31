@@ -12,6 +12,9 @@ namespace Enemy
         private IMovementAgent _movementAgent;
         public IMovementAgent MovementAgent => _movementAgent;
 
+        [SerializeField] private Transform _aimTo;
+        public Transform AimTo => _aimTo;
+
         public void AttachData(EnemyData data)
         {
             _enemyData = data;

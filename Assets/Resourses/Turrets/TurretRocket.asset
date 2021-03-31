@@ -9,10 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6d947db4e4274d6e9c579fecfba25601, type: 3}
-  m_Name: BulletStd
+  m_Script: {fileID: 11500000, guid: 67bfc515baf54918874270a2f869aac1, type: 3}
+  m_Name: TurretRocket
   m_EditorClassIdentifier: 
-  BulletPrefab: {fileID: 4749945841712867723, guid: 132f2df04332c4b65911d411e3124630, type: 3}
-  Speed: 10
-  Damage: 20
-  LifeTime: 5
+  TurretPrefab: {fileID: 8319089026047474969, guid: 8e80f73227d322ff08788cd96967ec2c, type: 3}
+  WeaponAsset: {fileID: 11400000, guid: 97cc594962e4b67ab8991f510c437bec, type: 2}

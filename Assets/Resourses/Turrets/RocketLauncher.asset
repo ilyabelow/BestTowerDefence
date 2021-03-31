@@ -9,10 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6d947db4e4274d6e9c579fecfba25601, type: 3}
-  m_Name: BulletStd
+  m_Script: {fileID: 11500000, guid: 3504a001c1af45ebb607a2c6c6053296, type: 3}
+  m_Name: RocketLauncher
   m_EditorClassIdentifier: 
-  BulletPrefab: {fileID: 4749945841712867723, guid: 132f2df04332c4b65911d411e3124630, type: 3}
-  Speed: 10
-  Damage: 20
-  LifeTime: 5
+  ProjectileAsset: {fileID: 11400000, guid: 1a4cfe86b7fd6789087aa9e4186635e9, type: 2}
+  RechargeTime: 0.3
+  MaxDistance: 10
+  IdleRotationSpeed: 1

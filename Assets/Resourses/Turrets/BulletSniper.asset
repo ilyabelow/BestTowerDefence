@@ -15,3 +15,4 @@ MonoBehaviour:
   BulletPrefab: {fileID: 4749945841712867723, guid: 132f2df04332c4b65911d411e3124630, type: 3}
   Speed: 50
   Damage: 100
+  LifeTime: 2

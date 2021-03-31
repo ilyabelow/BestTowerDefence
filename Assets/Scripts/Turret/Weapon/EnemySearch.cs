@@ -19,6 +19,7 @@ namespace Turret.Weapon
 
             foreach (EnemyData enemyData in Game.Player.EnemyDatas)
             {
+                if (!enemyData.IsAlive) continue;
                 float sqrDistance = (enemyData.View.transform.position - center).sqrMagnitude;
                 if (sqrDistance > maxSqrDistance || sqrDistance >= minSqrDistance)
                 {
@@ -41,6 +42,7 @@ namespace Turret.Weapon
             {
                 foreach (EnemyData enemyData in node.EnemyDatas)
                 {
+                    if (!enemyData.IsAlive) continue;
                     float sqrDistance = (enemyData.View.transform.position - center).sqrMagnitude;
                     if (sqrDistance >= minSqrDistance)
                     {
@@ -52,6 +54,21 @@ namespace Turret.Weapon
                 }
             }
             return closestEnemy;
+        }
+
+        public static List<EnemyData> GetEnemiesInRadius(Vector3 center, float radius)
+        {
+            var list = new List<EnemyData>();
+            var radiusSqr = radius * radius;
+            foreach (var enemyData in Game.Player.EnemyDatas)
+            {
+                if ((enemyData.View.transform.position - center).sqrMagnitude <= radiusSqr)
+                {
+                    list.Add(enemyData);
+                }
+            }
+
+            return list;
         }
 
         public static bool CheckReach(Vector3 center, EnemyData enemy, float distance)
