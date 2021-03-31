@@ -9,8 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 67bfc515baf54918874270a2f869aac1, type: 3}
-  m_Name: TurretSniper
+  m_Script: {fileID: 11500000, guid: c6dd2ee284ee4fef8c91058863363fce, type: 3}
+  m_Name: LaserWeapon
   m_EditorClassIdentifier: 
-  TurretPrefab: {fileID: 8319089026047474969, guid: faf529d825d4dbc14af98de214b52a9b, type: 3}
-  WeaponAsset: {fileID: 11400000, guid: fd4baf47a86ffe1e084fe6aac8d97e37, type: 2}
+  Beam: {fileID: 5331662572279686544, guid: 7e92fab5344c1b8efa5e1b48bd5be8aa, type: 3}
+  DPS: 10
+  MaxDistance: 5

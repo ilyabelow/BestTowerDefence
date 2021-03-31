@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace Turret.Weapon.Field
 {
-    [CreateAssetMenu(fileName = "FieldWeapon", menuName = "Assets/Weapons/FieldWeapon")]
+    [CreateAssetMenu(fileName = "FieldWeapon", menuName = "Assets/Weapons/Field Weapon")]
     public class FieldWeaponAsset : WeaponAsset
     {
         public GameObject FieldPrefab;

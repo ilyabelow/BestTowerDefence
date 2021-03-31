@@ -53,6 +53,7 @@ namespace Turret.Weapon
                     closestEnemy = enemyData;
                 }
             }
+
             return closestEnemy;
         }
 
@@ -69,6 +70,11 @@ namespace Turret.Weapon
             }
 
             return list;
+        }
+
+        public static List<Node> GetCloseNodes(Vector3 point, float radius)
+        {
+            return Game.Player.Grid.GetNodesInCircle(point, radius);
         }
 
         public static bool CheckReach(Vector3 center, EnemyData enemy, float distance)

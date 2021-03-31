@@ -9,8 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 67bfc515baf54918874270a2f869aac1, type: 3}
-  m_Name: TurretSniper
+  m_Script: {fileID: 11500000, guid: 3504a001c1af45ebb607a2c6c6053296, type: 3}
+  m_Name: NoneWeapon
   m_EditorClassIdentifier: 
-  TurretPrefab: {fileID: 8319089026047474969, guid: faf529d825d4dbc14af98de214b52a9b, type: 3}
-  WeaponAsset: {fileID: 11400000, guid: fd4baf47a86ffe1e084fe6aac8d97e37, type: 2}
+  ProjectileAsset: {fileID: 0}
+  RechargeTime: 100000000
+  MaxDistance: 0
+  IdleRotationSpeed: 0

@@ -17,7 +17,7 @@ namespace Turret.Weapon.Field
             _asset = asset;
             _field = Object.Instantiate(asset.FieldPrefab, view.ProjectileOrigin.position, Quaternion.identity);
             _field.transform.localScale = Vector3.one * asset.Radius;
-            _closeNodes = Game.Player.Grid.GetNodesInCircle(view.transform.position, asset.Radius);
+            _closeNodes = EnemySearch.GetCloseNodes(view.transform.position, asset.Radius);
         }
         
         public void TickWeapon()

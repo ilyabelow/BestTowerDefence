@@ -28,7 +28,7 @@ namespace Turret.Weapon.Projectile
             _asset = asset;
             _view = view;
             _countdown = _asset.RechargeTime;
-            _closeNodes = Game.Player.Grid.GetNodesInCircle(view.transform.position, _asset.MaxDistance);
+            _closeNodes = EnemySearch.GetCloseNodes(view.transform.position, _asset.MaxDistance);
             // Beautification
             _idleRotationDirection = ((int) (UnityEngine.Random.value * 2)) * 2 - 1;
             _view.Tower.Rotate(Vector3.up, UnityEngine.Random.value * 360);

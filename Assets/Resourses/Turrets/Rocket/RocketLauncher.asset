@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: RocketLauncher
   m_EditorClassIdentifier: 
   ProjectileAsset: {fileID: 11400000, guid: 1a4cfe86b7fd6789087aa9e4186635e9, type: 2}
-  RechargeTime: 0.3
+  RechargeTime: 1
   MaxDistance: 10
   IdleRotationSpeed: 1
