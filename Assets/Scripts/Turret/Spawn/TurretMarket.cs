@@ -1,4 +1,4 @@
-namespace Turret
+namespace Turret.Spawn
 {
     public class TurretMarket
     {

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fefdb7403cbc44eab73c4fa72eb813d0, type: 3}
   m_Name: GunShot
   m_EditorClassIdentifier: 
-  ProjectileAsset: {fileID: 11400000, guid: 1642fed3c91c63bb9b77b02e658dbd13, type: 2}
+  ProjectileAsset: {fileID: 11400000, guid: a16730b58d956a667b2cd9e1be841942, type: 2}
   RechargeTime: 1
   MaxDistance: 10
   IdleRotationSpeed: 0.5

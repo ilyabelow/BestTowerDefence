@@ -1,10 +1,9 @@
-using Enemy;
 using Field;
 using Runtime;
 using UnityEngine;
 using Grid = Field.Grid;
 
-namespace Turret
+namespace Turret.Spawn
 {
     public class TurretSpawnController : IController
     {

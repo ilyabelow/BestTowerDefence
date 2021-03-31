@@ -1,5 +1,4 @@
-using System;
-using Enemy.MovementAgent;
+using Enemy.Movement;
 using UnityEngine;
 
 namespace Enemy

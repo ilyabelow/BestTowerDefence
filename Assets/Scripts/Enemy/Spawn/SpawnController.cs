@@ -1,9 +1,9 @@
-using Enemy.MovementAgent;
+using Enemy.Movement;
 using Runtime;
 using UnityEngine;
 using Grid = Field.Grid;
 
-namespace Enemy
+namespace Enemy.Spawn
 {
     public class SpawnController : IController
     {

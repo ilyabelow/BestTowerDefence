@@ -3,7 +3,7 @@ using UnityEngine;
 using Grid = Field.Grid;
 using Vector3 = UnityEngine.Vector3;
 
-namespace Enemy.MovementAgent
+namespace Enemy.Movement
 {
     public class AirMovementAgent : IMovementAgent
     {

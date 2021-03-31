@@ -1,6 +1,6 @@
 using Runtime;
 
-namespace Enemy
+namespace Enemy.Movement
 {
     public class MovementController : IController
     {

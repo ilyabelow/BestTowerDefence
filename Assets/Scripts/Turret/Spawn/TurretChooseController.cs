@@ -1,7 +1,7 @@
 using Runtime;
 using UnityEngine;
 
-namespace Turret
+namespace Turret.Spawn
 {
     public class TurretChooseController : IController
     {

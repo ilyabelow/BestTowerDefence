@@ -1,6 +1,6 @@
 using Runtime;
 
-namespace Turret
+namespace Turret.Weapon
 {
     public class TurretShootController : IController
     {
