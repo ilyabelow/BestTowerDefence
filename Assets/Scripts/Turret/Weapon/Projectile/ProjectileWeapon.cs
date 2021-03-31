@@ -79,7 +79,7 @@ namespace Turret.Weapon.Projectile
             }
 
             _countdown = 0;
-            _closestEnemy = EnemySearch.GetClosestEnemy(_view.transform.position, _asset.MaxDistance, _closeNodes);
+            _closestEnemy = EnemySearch.GetClosestEnemy(_view.transform.position, _closeNodes);
 
             if (_closestEnemy == null) return;
             // TODO fix bug when _closestEnemy becomes null after TickShoot???
@@ -107,8 +107,7 @@ namespace Turret.Weapon.Projectile
 
         protected virtual void Shoot()
         {
-            _projectiles.Add(_asset.ProjectileAsset.CreateProjectile(_view.ProjectileOrigin.position,
-                _view.ProjectileOrigin.forward));
+            _projectiles.Add(_asset.ProjectileAsset.CreateProjectile(_view.ProjectileOrigin.position, _view.ProjectileOrigin.forward));
         }
     }
 }

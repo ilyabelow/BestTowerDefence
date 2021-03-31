@@ -32,10 +32,8 @@ namespace Turret.Weapon
             return closestEnemy;
         }
 
-        public static EnemyData GetClosestEnemy(Vector3 center, float maxDistance, IEnumerable<Node> nodes)
+        public static EnemyData GetClosestEnemy(Vector3 center, IEnumerable<Node> nodes)
         {
-            float maxSqrDistance = maxDistance * maxDistance;
-
             float minSqrDistance = float.MaxValue;
             EnemyData closestEnemy = null;
 
@@ -44,7 +42,7 @@ namespace Turret.Weapon
                 foreach (EnemyData enemyData in node.EnemyDatas)
                 {
                     float sqrDistance = (enemyData.View.transform.position - center).sqrMagnitude;
-                    if (sqrDistance > maxSqrDistance || sqrDistance >= minSqrDistance)
+                    if (sqrDistance >= minSqrDistance)
                     {
                         continue;
                     }

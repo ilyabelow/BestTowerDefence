@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3504a001c1af45ebb607a2c6c6053296, type: 3}
-  m_Name: BulletGun
+  m_Name: GunSniper
   m_EditorClassIdentifier: 
-  ProjectileAsset: {fileID: 11400000, guid: fc106707ee6e3654382b57a87fec84aa, type: 2}
-  RechargeTime: 0.5
-  MaxDistance: 5
-  IdleRotationSpeed: 0.5
+  ProjectileAsset: {fileID: 11400000, guid: d2e594b8d8c6fe11b9ffeb825ba6a2ce, type: 2}
+  RechargeTime: 2
+  MaxDistance: 20
+  IdleRotationSpeed: 0.1

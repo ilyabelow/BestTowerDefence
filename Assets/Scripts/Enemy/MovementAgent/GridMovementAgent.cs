@@ -46,7 +46,7 @@ namespace Enemy.MovementAgent
         private void MoveOn(Vector3 dx)
         {
             _view.transform.position += dx;
-            _view.transform.LookAt(dx);
+            _view.transform.rotation =  Quaternion.LookRotation(dx);
         }
     }
 }
