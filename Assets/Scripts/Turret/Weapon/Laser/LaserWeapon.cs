@@ -36,6 +36,7 @@ namespace Turret.Weapon.Laser
 
         public void Clean()
         {
+            Object.Destroy(_beam.gameObject);
         }
     }
 }
