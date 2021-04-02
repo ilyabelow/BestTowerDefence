@@ -5,9 +5,10 @@ namespace Turret.Weapon.Projectile.Rocket
 {
     public class Rocket : MonoBehaviour, IProjectile
     {
+        private bool _didHit;
+        private bool _hitHandled;
         private EnemyData _target;
         private RocketAsset _asset;
-        private bool _didHit;
         private Vector3 _dir;
         private float _timeLeft;
         
@@ -39,6 +40,8 @@ namespace Turret.Weapon.Projectile.Rocket
 
         public void HandleHit()
         {
+            if (_hitHandled) return;
+            _hitHandled = true;
             var toDamage = EnemySearch.GetEnemiesInRadius(transform.position, _asset.HitRadius);
             foreach (var enemyData in toDamage)
             {

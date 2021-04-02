@@ -9,11 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fefdb7403cbc44eab73c4fa72eb813d0, type: 3}
-  m_Name: GunShot
+  m_Script: {fileID: 11500000, guid: 3504a001c1af45ebb607a2c6c6053296, type: 3}
+  m_Name: ShotGun
   m_EditorClassIdentifier: 
-  ProjectileAsset: {fileID: 11400000, guid: a16730b58d956a667b2cd9e1be841942, type: 2}
-  RechargeTime: 1
-  MaxDistance: 10
-  IdleRotationSpeed: 0.5
-  BulletCount: 5
+  ProjectileAsset: {fileID: 0}
+  RechargeTime: 0
+  MaxDistance: 0
+  IdleRotationSpeed: 0

@@ -17,7 +17,7 @@ MonoBehaviour:
   - EnemyAsset: {fileID: 11400000, guid: 2c5fdc9e8c4ccf29a8d78f1b45eaa325, type: 2}
     Count: 20
     TimeBetweenSpawns: 0.5
-    TimeBeforeStartWave: 2
+    TimeBeforeStartWave: 10
   - EnemyAsset: {fileID: 11400000, guid: 70da7cd5c4c612622aefcde476ddba87, type: 2}
     Count: 10
     TimeBetweenSpawns: 0.7

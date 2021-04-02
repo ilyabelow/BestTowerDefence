@@ -6,6 +6,7 @@ namespace Turret.Weapon.Projectile.Bullet
     public class Bullet : MonoBehaviour, IProjectile
     {
         private bool _didHit;
+        private bool _hitHandled;
         private EnemyData _hitEnemy;
         private BulletAsset _asset;
         private float _timeLeft;
@@ -52,6 +53,8 @@ namespace Turret.Weapon.Projectile.Bullet
 
         public void HandleHit()
         {
+            if (_hitHandled) return;
+            _hitHandled = true;
             _hitEnemy?.ApplyDamage(_asset.Damage);
             Destroy(gameObject);
         }
