@@ -15,6 +15,8 @@ namespace Runtime
         public static Player Player => _player;
         public static LevelAsset CurrentLevel => _currentLevel;
 
+        public static bool Started => _assetRoot != null;
+
         public static void SetAssetRoot(AssetRoot assetRoot)
         {
             _assetRoot = assetRoot;
@@ -24,6 +26,12 @@ namespace Runtime
         {
             _currentLevel = _assetRoot.Levels[index];
             // Async because the scene is only loaded on the next frame
+            if (_currentLevel.SceneAsset.name.Equals(SceneManager.GetActiveScene().name))
+            {
+                StartRunner(null);
+                return;
+            }
+            
             AsyncOperation operation = SceneManager.LoadSceneAsync(_currentLevel.SceneAsset.name);
             operation.completed += StartRunner;
         }

@@ -1,3 +1,4 @@
+using System.Resources;
 using Assets;
 using UnityEngine;
 
@@ -9,6 +10,11 @@ namespace Runtime
 
         void Start()
         {
+            if (Game.Started)
+            {
+                Destroy(gameObject);
+                return;
+            }
             Game.SetAssetRoot(_assetRoot);
             Game.StartLevel(0);
         }

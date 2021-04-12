@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3504a001c1af45ebb607a2c6c6053296, type: 3}
   m_Name: ShotGun
   m_EditorClassIdentifier: 
-  ProjectileAsset: {fileID: 0}
-  RechargeTime: 0
-  MaxDistance: 0
-  IdleRotationSpeed: 0
+  ProjectileAsset: {fileID: 11400000, guid: 6c7a22956edc85d5ebc20e2afac28903, type: 2}
+  RechargeTime: 1
+  MaxDistance: 5
+  IdleRotationSpeed: 0.1

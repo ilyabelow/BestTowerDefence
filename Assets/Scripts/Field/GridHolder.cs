@@ -113,6 +113,7 @@ namespace Field
         private void OnValidate()
         {
             ResizePlane();
+            PositionMarkers();
         }
         
       /*
