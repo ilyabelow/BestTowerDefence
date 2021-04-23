@@ -137,6 +137,7 @@ GameObject:
   - component: {fileID: 2566545635069191124}
   - component: {fileID: 3877720852257469275}
   - component: {fileID: 6524702189217277090}
+  - component: {fileID: 7377020687847599200}
   m_Layer: 0
   m_Name: Bob
   m_TagString: Enemy
@@ -188,6 +189,25 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0.6, z: 0}
+--- !u!95 &7377020687847599200
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3819912672067759006}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 01c7ceaf38f4f6bd4a603ad83e56e09a, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &4348759131707867327
 GameObject:
   m_ObjectHideFlags: 0

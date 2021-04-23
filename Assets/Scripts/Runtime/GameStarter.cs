@@ -7,6 +7,7 @@ namespace Runtime
     public class GameStarter : MonoBehaviour
     {
         [SerializeField] private AssetRoot _assetRoot;
+        [SerializeField] private int _levelToStart;
 
         void Start()
         {
@@ -16,7 +17,7 @@ namespace Runtime
                 return;
             }
             Game.SetAssetRoot(_assetRoot);
-            Game.StartLevel(0);
+            Game.StartLevel(_levelToStart);
         }
     }
 }

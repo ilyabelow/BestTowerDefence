@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8621717577963453453}
   - component: {fileID: 184276317525557633}
   - component: {fileID: 3694034980862876460}
+  - component: {fileID: 5096846157842181221}
   m_Layer: 0
   m_Name: Carol
   m_TagString: Enemy
@@ -62,6 +63,25 @@ CapsuleCollider:
   m_Height: 1.355211
   m_Direction: 2
   m_Center: {x: 0, y: 2, z: 0.06407666}
+--- !u!95 &5096846157842181221
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 752705192131390643}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1081658664085149557
 GameObject:
   m_ObjectHideFlags: 0

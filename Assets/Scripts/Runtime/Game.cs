@@ -25,13 +25,14 @@ namespace Runtime
         public static void StartLevel(int index)
         {
             _currentLevel = _assetRoot.Levels[index];
-            // Async because the scene is only loaded on the next frame
+            // In case we started the scene corresponding to level
             if (_currentLevel.SceneAsset.name.Equals(SceneManager.GetActiveScene().name))
             {
                 StartRunner(null);
                 return;
             }
             
+            // Async because the scene is only loaded on the next frame
             AsyncOperation operation = SceneManager.LoadSceneAsync(_currentLevel.SceneAsset.name);
             operation.completed += StartRunner;
         }
@@ -39,7 +40,9 @@ namespace Runtime
         private static void StartRunner(AsyncOperation operation)
         {
             _player = new Player();
-            _runner = Object.Instantiate(_assetRoot.RunnerPrefab);
+            var runner = new GameObject("Runner");
+            runner.AddComponent<Runner>();
+            _runner = runner.GetComponent<Runner>();
             _runner.StartRunning();
         }
 

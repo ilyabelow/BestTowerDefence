@@ -329,6 +329,7 @@ GameObject:
   - component: {fileID: 1773678349602848945}
   - component: {fileID: 648289660911566070}
   - component: {fileID: 8251837304915262316}
+  - component: {fileID: -8218896348662860046}
   m_Layer: 0
   m_Name: Alice
   m_TagString: Enemy
@@ -383,6 +384,25 @@ CapsuleCollider:
   m_Height: 4.4016476
   m_Direction: 1
   m_Center: {x: 0, y: 2.7236514, z: 0}
+--- !u!95 &-8218896348662860046
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1773678349602848950}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 01c7ceaf38f4f6bd4a603ad83e56e09a, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1773678349866175433
 GameObject:
   m_ObjectHideFlags: 0
