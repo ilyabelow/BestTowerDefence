@@ -1,5 +1,7 @@
 using Enemy;
+using Runtime;
 using UnityEngine;
+using Utils;
 
 namespace Turret.Weapon.Projectile.Bullet
 {   
@@ -13,7 +15,7 @@ namespace Turret.Weapon.Projectile.Bullet
         public float LifeTime;
         public override IProjectile CreateProjectile(Vector3 origin, Vector3 dir, EnemyData target = null)
         {
-            var bullet = Instantiate(BulletPrefab, origin, Quaternion.LookRotation(dir));
+            var bullet = ObjectPool.InstantiatePooled(BulletPrefab, origin, Quaternion.LookRotation(dir), Folder);
             bullet.AttachAsset(this);
             return bullet;
         }

@@ -22,20 +22,23 @@ namespace Enemy
                 if (!enemyData.IsAlive)
                 {
                     toDie.Add(enemyData);
+                    enemyData.View.MovementAgent.Die();
                 }
             }
 
             foreach (var enemyData in toDie)
             {
                 Game.Player.EnemyDied(enemyData);
-                Object.Destroy(enemyData.View.gameObject);
+                Object.Destroy(enemyData.View.gameObject); 
             }
-
-            // Temporal solution!!!!!!!!!!!!!!!!!
-            foreach (var node in _grid.EnumerateAllNodes())
-            {
-                node.CleanDead();
-            }
+            // //Debug
+            // int saved = 0;
+            // foreach (var node in Game.Player.Grid.EnumerateAllNodes())
+            // {
+            //     saved += node.EnemyDatas.Count;
+            // }
+            //
+            // Debug.Log(saved);
         }
 
         public void OnStart()

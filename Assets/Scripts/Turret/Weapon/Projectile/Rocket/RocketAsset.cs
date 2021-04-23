@@ -1,6 +1,8 @@
 using Enemy;
+using Runtime;
 using UnityEditor;
 using UnityEngine;
+using Utils;
 
 namespace Turret.Weapon.Projectile.Rocket
 {
@@ -16,7 +18,7 @@ namespace Turret.Weapon.Projectile.Rocket
         
         public override IProjectile CreateProjectile(Vector3 origin, Vector3 dir, EnemyData target)
         {
-            var rocket = Instantiate(RocketPrefab, origin, Quaternion.LookRotation(dir));
+            var rocket = ObjectPool.InstantiatePooled(RocketPrefab, origin, Quaternion.LookRotation(dir), Folder);
             rocket.AttachAsset(this);
             rocket.AttachTarget(target);
             return rocket;

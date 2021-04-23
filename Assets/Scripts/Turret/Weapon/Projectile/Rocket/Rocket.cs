@@ -1,9 +1,11 @@
+using System;
 using Enemy;
 using UnityEngine;
+using Utils;
 
 namespace Turret.Weapon.Projectile.Rocket
 {
-    public class Rocket : MonoBehaviour, IProjectile
+    public class Rocket : PooledMonoBehaviour, IProjectile
     {
         private bool _didHit;
         private bool _hitHandled;
@@ -11,7 +13,14 @@ namespace Turret.Weapon.Projectile.Rocket
         private RocketAsset _asset;
         private Vector3 _dir;
         private float _timeLeft;
-        
+
+        public override void AwakePooled()
+        {
+            _didHit = false;
+            _hitHandled = false;
+            _target = null;
+        }
+
         private void OnTriggerEnter(Collider other)
         {
             _didHit = true;
@@ -47,7 +56,7 @@ namespace Turret.Weapon.Projectile.Rocket
             {
                 enemyData.ApplyDamage(_asset.Damage);
             }
-            Destroy(gameObject);
+            ObjectPool.DestroyPooled(this);
         }
 
         public void AttachAsset(RocketAsset asset)

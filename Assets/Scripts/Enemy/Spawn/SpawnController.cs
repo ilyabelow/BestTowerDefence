@@ -12,6 +12,7 @@ namespace Enemy.Spawn
         
         private float _spawnStartTime;
         private float _passedTimeAtPreviousFrame;
+
         
         public SpawnController(Grid grid, SpawnWave[] spawnWaves)
         {
@@ -56,7 +57,7 @@ namespace Enemy.Spawn
         private void SpawnEnemy(EnemyAsset asset)
         {
             EnemyData data = new EnemyData(asset);
-            var view = Object.Instantiate(asset.EnemyPrefab);
+            var view = Object.Instantiate(asset.EnemyPrefab, Game.Player.EnemiesFolder);
             data.AttachView(view);
             view.AttachData(data);
 

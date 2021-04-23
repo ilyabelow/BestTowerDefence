@@ -40,9 +40,7 @@ namespace Runtime
         private static void StartRunner(AsyncOperation operation)
         {
             _player = new Player();
-            var runner = new GameObject("Runner");
-            runner.AddComponent<Runner>();
-            _runner = runner.GetComponent<Runner>();
+            _runner = Object.FindObjectOfType<Runner>();
             _runner.StartRunning();
         }
 

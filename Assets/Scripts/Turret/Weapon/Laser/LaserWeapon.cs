@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using Field;
+using Runtime;
 using UnityEngine;
 
 namespace Turret.Weapon.Laser
@@ -16,7 +17,7 @@ namespace Turret.Weapon.Laser
             _asset = asset;
             _view = view;
             _closeNodes = EnemySearch.GetCloseNodes(view.transform.position, asset.MaxDistance);
-            _beam = Object.Instantiate(_asset.Beam);
+            _beam = Object.Instantiate(_asset.Beam, Game.Player.BulletsFolder);
         }
         
         public void TickWeapon()

@@ -31,7 +31,7 @@ namespace Enemy.Movement
                 _targetNode = _targetNode.NextNode;
                 if (_targetNode == null)
                 {
-                    _view.Data.Die();
+                    _view.Data.ReachedTarget();
                 }
                 else
                 {
@@ -43,6 +43,12 @@ namespace Enemy.Movement
                 MoveOn(diff.normalized * (Time.deltaTime * _speed));
             }
         }
+
+        public void Die()
+        {
+            _targetNode?.EnemyLeft(_view.Data);
+        }
+
         private void MoveOn(Vector3 dx)
         {
             _view.transform.position += dx;

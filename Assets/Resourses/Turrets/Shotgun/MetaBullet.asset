@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: MetaBullet
   m_EditorClassIdentifier: 
   InternalAsset: {fileID: 11400000, guid: a16730b58d956a667b2cd9e1be841942, type: 2}
-  Load: 10
+  Load: 3
   MaxDispersion: 0.3

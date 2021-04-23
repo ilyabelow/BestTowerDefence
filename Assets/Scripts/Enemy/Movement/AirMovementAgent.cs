@@ -50,6 +50,12 @@ namespace Enemy.Movement
             }
 
         }
+
+        public void Die()
+        {
+            _occupiedNode.EnemyLeft(_view.Data);
+        }
+
         private void MoveOn(Vector3 dx)
         {
             _view.transform.position += dx;

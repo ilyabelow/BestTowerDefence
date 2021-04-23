@@ -40,8 +40,8 @@ namespace Field
             PositionMarkers();
 
             _camera = Camera.main;
-            _cursor = Instantiate(_cursorPrefab, Vector3.zero, Quaternion.identity);
-            _cursor.transform.localScale = _nodeSize * (Vector3.forward + Vector3.right) + 0.1f * Vector3.up;
+            _cursor = Instantiate(_cursorPrefab, Vector3.zero, Quaternion.identity, transform);
+            _cursor.transform.localScale = _nodeSize * (Vector3.forward / transform.localScale.z + Vector3.right / transform.localScale.x ) + 0.1f * Vector3.up;
             _cursorMeshRenderer = _cursor.GetComponent<MeshRenderer>();
             _grid.UpdatePaths();
         }

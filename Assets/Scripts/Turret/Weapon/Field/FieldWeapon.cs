@@ -15,7 +15,7 @@ namespace Turret.Weapon.Field
         public FieldWeapon(FieldWeaponAsset asset, TurretView view)
         {
             _asset = asset;
-            _field = Object.Instantiate(asset.FieldPrefab, view.ProjectileOrigin.position, Quaternion.identity);
+            _field = Object.Instantiate(asset.FieldPrefab, view.ProjectileOrigin.position, Quaternion.identity, Game.Player.BulletsFolder);
             _field.transform.localScale = Vector3.one * asset.Radius;
             _closeNodes = EnemySearch.GetCloseNodes(view.transform.position, asset.Radius);
         }

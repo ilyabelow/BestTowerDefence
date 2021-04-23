@@ -34,5 +34,10 @@ namespace Enemy
         {
             _isAlive = false;
         }
+
+        public void ReachedTarget()
+        {
+            _isAlive = false;
+        }
     }
 }

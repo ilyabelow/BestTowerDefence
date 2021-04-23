@@ -40,7 +40,7 @@ namespace Turret.Spawn
         private void SpawnTurret(TurretAsset asset, Node node)
         {
             TurretData data = new TurretData(asset);
-            TurretView view = Object.Instantiate(asset.TurretPrefab, node.Position, Quaternion.identity);
+            TurretView view = Object.Instantiate(asset.TurretPrefab, node.Position, Quaternion.identity, Game.Player.TurretsFolder);
             view.AttachData(data);
             data.AttachView(view);
 

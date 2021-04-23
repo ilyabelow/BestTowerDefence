@@ -1,15 +1,23 @@
+using System;
 using Enemy;
 using UnityEngine;
+using Utils;
 
 namespace Turret.Weapon.Projectile.Bullet
 {
-    public class Bullet : MonoBehaviour, IProjectile
+    public class Bullet : PooledMonoBehaviour, IProjectile
     {
         private bool _didHit;
         private bool _hitHandled;
         private EnemyData _hitEnemy;
         private BulletAsset _asset;
         private float _timeLeft;
+
+        public override void AwakePooled()
+        {
+            _didHit = false;
+            _hitHandled = false;
+        }
 
         public void TickMovement()
         {
@@ -56,7 +64,7 @@ namespace Turret.Weapon.Projectile.Bullet
             if (_hitHandled) return;
             _hitHandled = true;
             _hitEnemy?.ApplyDamage(_asset.Damage);
-            Destroy(gameObject);
+            ObjectPool.DestroyPooled(this);
         }
     }
 }

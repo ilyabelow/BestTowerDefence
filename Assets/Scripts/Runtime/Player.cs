@@ -20,12 +20,23 @@ namespace Runtime
         public readonly Grid Grid;
         public readonly TurretMarket TurretMarket;
 
-
+        private readonly Transform _turretsFolder;
+        private readonly Transform _enemiesFolder;
+        private readonly Transform _bulletsFolder;
+        
+        public Transform TurretsFolder => _turretsFolder;
+        public Transform EnemiesFolder => _enemiesFolder;
+        public Transform BulletsFolder => _bulletsFolder;
+        
         public Player()
         {
             GridHolder = Object.FindObjectOfType<GridHolder>();
             Grid = GridHolder.Grid;
             TurretMarket = new TurretMarket(Game.CurrentLevel.TurretMarket);
+            
+            _turretsFolder = GameObject.Find("Turrets").transform;
+            _enemiesFolder = GameObject.Find("Enemies").transform;
+            _bulletsFolder = GameObject.Find("Bullets").transform;
         }
 
         public void EnemySpawned(EnemyData data)
