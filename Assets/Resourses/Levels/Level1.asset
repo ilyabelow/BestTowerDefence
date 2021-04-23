@@ -14,6 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SceneAsset: {fileID: 102900000, guid: 9fc0d4010bbf28b4594072e72b8655ab, type: 3}
   SpawnWaves:
+  - EnemyAsset: {fileID: 11400000, guid: 3d26dc3e97b6b79c298b1905d2cd3ad3, type: 2}
+    Count: 10
+    TimeBetweenSpawns: 1
+    TimeBeforeStartWave: 2
   - EnemyAsset: {fileID: 11400000, guid: 2c5fdc9e8c4ccf29a8d78f1b45eaa325, type: 2}
     Count: 20
     TimeBetweenSpawns: 0.5
@@ -22,15 +26,11 @@ MonoBehaviour:
     Count: 10
     TimeBetweenSpawns: 0.7
     TimeBeforeStartWave: 2
-  - EnemyAsset: {fileID: 11400000, guid: 3d26dc3e97b6b79c298b1905d2cd3ad3, type: 2}
-    Count: 10
-    TimeBetweenSpawns: 1
-    TimeBeforeStartWave: 2
   TurretMarket:
+  - {fileID: 11400000, guid: 9634e5e69abecc7bd81f199878184734, type: 2}
   - {fileID: 11400000, guid: 63579900b25c65e139aac0d62c9cbdfe, type: 2}
   - {fileID: 11400000, guid: fb607990417ce3a22a64450addce4133, type: 2}
   - {fileID: 11400000, guid: 8ce0ff1f38c38849195fd692050968e0, type: 2}
   - {fileID: 11400000, guid: a30c7e1f3bda7f96098b243114043ec4, type: 2}
   - {fileID: 11400000, guid: 4251486aa6ee90b3a9b145da3a9cbf53, type: 2}
   - {fileID: 11400000, guid: 7fee6b70c46aa40e4b067c755d6e94cb, type: 2}
-  - {fileID: 11400000, guid: 9634e5e69abecc7bd81f199878184734, type: 2}

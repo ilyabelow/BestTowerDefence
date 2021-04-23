@@ -18,6 +18,7 @@ namespace Turret.Weapon.Field
             _field = Object.Instantiate(asset.FieldPrefab, view.ProjectileOrigin.position, Quaternion.identity, Game.Player.BulletsFolder);
             _field.transform.localScale = Vector3.one * asset.Radius;
             _closeNodes = EnemySearch.GetCloseNodes(view.transform.position, asset.Radius);
+            view.Tower.Rotate(Vector3.up, UnityEngine.Random.value * 360);
         }
         
         public void TickWeapon()
