@@ -1,3 +1,4 @@
+using System;
 using Enemy.Movement;
 using UnityEngine;
 
@@ -13,6 +14,14 @@ namespace Enemy
 
         [SerializeField] private Transform _aimTo;
         public Transform AimTo => _aimTo;
+
+        private Animator _animator;
+        public Animator Animator => _animator;
+
+        public void Awake()
+        {
+            _animator = GetComponent<Animator>();
+        }
 
         public void AttachData(EnemyData data)
         {

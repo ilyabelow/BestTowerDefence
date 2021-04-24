@@ -29,7 +29,7 @@ namespace Enemy
             foreach (var enemyData in toDie)
             {
                 Game.Player.EnemyDied(enemyData);
-                Object.Destroy(enemyData.View.gameObject); 
+                Object.Destroy(enemyData.View.gameObject, 5f); //buffer for animations to play 
             }
             // //Debug
             // int saved = 0;

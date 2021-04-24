@@ -1,3 +1,5 @@
+using UnityEngine;
+
 namespace Enemy
 {
     public class EnemyData
@@ -9,6 +11,8 @@ namespace Enemy
         public bool IsAlive => _isAlive;
         
         private float _health;
+        private static readonly int Died = Animator.StringToHash("Died");
+        private static readonly int Won = Animator.StringToHash("Won");
 
 
         public EnemyData(EnemyAsset asset)
@@ -32,11 +36,13 @@ namespace Enemy
 
         public void Die()
         {
+            View.Animator.SetTrigger(Died);
             _isAlive = false;
         }
 
         public void ReachedTarget()
         {
+            View.Animator.SetTrigger(Won);
             _isAlive = false;
         }
     }

@@ -63,7 +63,10 @@ namespace Turret.Weapon.Projectile.Bullet
         {
             if (_hitHandled) return;
             _hitHandled = true;
-            _hitEnemy?.ApplyDamage(_asset.Damage);
+            if (_hitEnemy != null && _hitEnemy.IsAlive)
+            {
+                _hitEnemy.ApplyDamage(_asset.Damage);
+            }
             ObjectPool.DestroyPooled(this);
         }
     }

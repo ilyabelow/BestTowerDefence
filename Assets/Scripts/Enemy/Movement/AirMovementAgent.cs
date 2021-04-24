@@ -34,7 +34,7 @@ namespace Enemy.Movement
             if (diff.magnitude <= Time.deltaTime * _speed)
             {
                 MoveOn(diff);
-                _view.Data.Die();
+                _view.Data.ReachedTarget();
             }
             else
             {
